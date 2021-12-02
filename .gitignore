@@ -1,0 +1,10 @@
+*.aux
+*.log
+*.gz
+*.AppImage
+*.pdf
+*.out
+*.toc
+*.blg
+*.lot
+*.bbl
