@@ -8,3 +8,6 @@
 *.blg
 *.lot
 *.bbl
+*.xml
+*.lof
+

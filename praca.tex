@@ -26,7 +26,12 @@
 \renewcommand{\appendixname}{Dodatek}
 
 \usepackage{setspace}
+\usepackage{float}
 \onehalfspacing
+\usepackage{graphicx}
+\usepackage[backend=biber]{biblatex}
+
+\addbibresource{Bibliografia/bibliografia.bib}
 
 
 \frenchspacing
@@ -151,8 +156,9 @@
 \newcommand{\polsl}{Politechnika Śląska}
 \newcommand{\wydzial}{Instytut Fizyki}
 \newcommand{\kierunek}{Kierunek: Fizyka Techniczna}
-
+\usepackage{siunitx}
 \begin{document}
+
 %\kslistofremarks 
 	
 %%%%%%%%%%%%%%%%%%  STRONA TYTULOWA %%%%%%%%%%%%%%%%%%%
@@ -259,8 +265,9 @@
 \pagestyle{tylkoNumeryStron}
 
 %%%%%%%%%%% bibliografia %%%%%%%%%%%%
-\bibliographystyle{plplain}
-\bibliography{Bibliografia/bibliografia}
+%\bibliographystyle{plplain}
+%\bibliography{Bibliografia/bibliografia}
+\printbibliography
 \addcontentsline{toc}{chapter}{Bibliografia}
 %%%%%%%%%  DODATKI %%%%%%%%%%%%%%%%%%% 
 
@@ -270,12 +277,8 @@
 \chapter*{Dokumentacja techniczna}
 \addcontentsline{toc}{chapter}{Dokumentacja techniczna}
 
-\chapter*{Spis skrótów i symboli}
-\addcontentsline{toc}{chapter}{Spis skrótów i symboli}
 
-\begin{itemize}
-\item[MCU] mikrokontroler (ang. \ang{microcontroller unit})
-\end{itemize}
+\include{skroty}
 
 
 \chapter*{Zawartość dołączonej płyty}
