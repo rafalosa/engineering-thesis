@@ -10,7 +10,9 @@
 \usepackage[utf8]{inputenc}                                      
 \usepackage[T1]{fontenc}  
 \usepackage{amsmath,amsfonts,amssymb,amsthm}
-\usepackage[british,polish]{babel} 
+\usepackage[british,polish]{babel}
+\usepackage{siunitx}
+
 \usepackage{indentfirst}
 \usepackage{lmodern}
 \usepackage{graphicx} 
@@ -27,6 +29,7 @@
 
 \usepackage{setspace}
 \usepackage{float}
+\usepackage{caption}
 \onehalfspacing
 \usepackage{graphicx}
 \usepackage[backend=biber]{biblatex}
@@ -100,7 +103,7 @@
 
 %%%%%%%%%%%%% OBCE WTRETY  
 \newcommand{\obcy}[1]{\emph{#1}}
-\newcommand{\ang}[1]{{\selectlanguage{british}\obcy{#1}}}
+\newcommand{\angver}[1]{{\selectlanguage{british}\obcy{#1}}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % polskie oznaczenia funkcji matematycznych
@@ -156,7 +159,6 @@
 \newcommand{\polsl}{Politechnika Śląska}
 \newcommand{\wydzial}{Instytut Fizyki}
 \newcommand{\kierunek}{Kierunek: Fizyka Techniczna}
-\usepackage{siunitx}
 \begin{document}
 
 %\kslistofremarks 
