@@ -2,7 +2,7 @@
 
 \chapter{Projekt PBL}
 
-Uczenie poprzez realizację projektów (ang. \angver{Project Based Learning}, PBL) jest metodą uczenia 
+Uczenie poprzez realizację projektów (ang. \angver{Project Based Learning}, PBL) jest metodą przyswajania wiedzy oraz nabywania kompetencji przez studentów poprzez rozwiązywanie rzeczywistych problemów. Dzięki takiemu podejściu, nowe informacje są zapamiętywane na zasadzie ich implementacji w rzeczywistości oraz daje to okazję do aplikacji już wcześniej zdobytej wiedzy i umiejętności. Pozwala to na głębsze zrozumienie treści oraz rozwój innych umiejętności takich jak krytyczne myślenie, praca w grupie i umiejętności komunikacyjne \cite{bib:PBL}. Rozdział ten poświęcony jest takiemu projektowi, w którym brałem udział dwa lata temu. Jego tematyką było zaprojektowanie układu laboratoryjnego przeznaczonego do badań nad wzrostem struktur biologicznych w warunkach mikrograwitacji z wyłączeniem ziemskiego pola magnetycznego.
 
 \section{Cel projektu} \label{cel_projektu}
 
@@ -37,13 +37,13 @@ Celem wspomnianego projektu było zaprojektowanie układu laboratoryjnego, skła
 
 \begin{figure}
 	\centering
-	\includegraphics[scale=0.5]{klinostat_klatka}
+	\includegraphics[scale=0.3]{klinostat_klatka}
 	\caption{Projekt klatki Helmholtza z klinostatem.} 
 	\caption*{Źródło: opracowanie własne}
 	\label{fig:klatka_helmholtza}
 \end{figure}
 
-\section{Konstrukcja klinostatu}
+\section{Konstrukcja klinostatu} \label{konstrukcja}
 
 Ten podrozdział poświęcony został krótkiemu opisowi konstrukcji samego klinostatu
  zaprojektowanego w ramach PBL. Zaprojektowane urządzenie jest klinostatem o dwóch stopniach
@@ -165,7 +165,7 @@ Drugą bardzo istotną dla działania klinostatu modfikacją, był projekt i kon
             pola magnetycznego. Na małym kole zębatym umieszczono dodatkowo wpusty umożliwiajace
              montaż enkoderów, jeśli zajdzie taka potrzeba. Całość zamknięta została w korpusie
               odpowiedzialnym za ochronę kół przez pyłem oraz zapobiegającym wydostaniu się
-               smaru na zewnątrz. Skonstruowana przekładna z nałożonym kołem pasowym
+               smaru na zewnątrz. Skonstruowana przekładnia z nałożonym kołem pasowym
                 przedstawiona jest na Rys. \ref{fig:gotowa przekładnia}. Zastosowanie przekładni
                  znacznie poprawiło działanie klinostatu, przy jednoczesnym zachowaniu wymaganej
                   prędkości obrotowej urządzenia.       
@@ -176,14 +176,16 @@ Drugą bardzo istotną dla działania klinostatu modfikacją, był projekt i kon
 	
 	\begin{subfigure}[b]{.49\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{rama_40_aisass}
+		\includegraphics[width=.6\textwidth]{przekladnia_projekt_exploded_shaded}
 		\caption{Projekt przekładni} 
 		\label{fig:projekt przekładni}
 	\end{subfigure}
 	\hfill%
 	\begin{subfigure}[b]{.49\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{2_diss}
+		\setlength{\fboxsep}{0pt}
+		\setlength{\fboxrule}{1pt}
+		\fbox{\includegraphics[width=\textwidth, angle=-90]{przekladnia_gotowa}}
 		\caption{Skonstruowana przekładnia.} 
 		
 		\label{fig:gotowa przekładnia}
@@ -195,7 +197,15 @@ Drugą bardzo istotną dla działania klinostatu modfikacją, był projekt i kon
 \end{figure}
 
 
+\section{Kontrola klinostatu}
 
-\section{Napęd klinostatu}
+Jak wspomniano w podrozdziale \ref{konstrukcja}, oba stopnie swobody klinostatu mają swoją niezależną jednostkę napędową. Jako źródło ruchu obrotowego wybrano silniki krokowe w standardzie NEMA 17, model 42BYGHM809. Są to silniki o rozdzielczości ruchu 400 kroków na pełen obrót, oraz momencie obrotowym wynoszącym \SI{0,48}{Nm}. Podłączone są one do opisanych wcześniej przekładni walcowych, których wyjścia zakończone są kołami pasowymi. Ruch obrotowy jest następnie przenoszony przez pasy zębate, które ostatecznie łączą się z głównymi kołami napędowymi klinostatu na szczycie konstrukcji jego podstawy. Na silniki krokowe zdecydowano się ze względu na prostotę ich sterowania oraz możliwość dokładnego pozycjonowania w razie potrzeby rozszerzenia urządzenia o taką funkcjonalność. Silniki podłączone są bezpośrednio do obudowy zawierającej elektronikę sterującą klinostatem. Elektronika sterująca składa się z platformy Arduino Leonardo stanowiącej sterownik układu, nakładki RAMPS dla platform Arduino, dwóch sterowników silników krokowych A4988, konwertera UART/USB w celu komunikacji z komputerem przez interfejs USB oraz przetwornicy step-up, konwertującej napięcie zasilacza 12V do 36V dla zasilania silników. W obudowie zamontowany został również wentylator chłodzący sterowniki silników krokowych. Zmontowany układ przedstawiony został na Rys. \ref{fig:elektronika}.
 
-\section{Elektronika układu sterowania}
+\begin{figure}[ht]
+	\centering
+	\setlength{\fboxsep}{0pt}
+	\setlength{\fboxrule}{1pt}
+	\fbox{\includegraphics[width=.6\textwidth]{elektronika}}
+	\caption{Elektronika klinostatu} 
+	\label{fig:elektronika}
+\end{figure}
