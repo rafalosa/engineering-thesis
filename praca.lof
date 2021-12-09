@@ -19,7 +19,7 @@
 \babel@toc {british}{}
 \babel@toc {polish}{}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {1.2}{\ignorespaces Rodzaje klinorotacji 2-D. \textbf {(a)} klinorotacja wertykalna \textbf {(b)} klinorotacja horyzontalna.\relax }}{8}{figure.caption.4}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Rodzaje klinorotacji 2-D. Źródło: \cite {bib:klinorotacja}\relax }}{8}{figure.caption.4}%
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {1.3}{\ignorespaces Przykładowa maszyna RPM, zawierająca mikroskop fluorescencyjny\relax }}{9}{figure.caption.5}%
 \defcounter {refsection}{0}\relax 
@@ -27,17 +27,25 @@
 \babel@toc {british}{}
 \babel@toc {polish}{}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Projekt klatki Helmholtza z klinostatem.\relax }}{13}{figure.caption.6}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Wizualizacja objętości w której spełniony jest założony warunek jednorodności pola magnetycznego. Maksymalny odchyłek spełniający założenie przyjęto za 1\% wartości centralnej. Zielona sfera reprezentuje komorę środowiskową wybraną na podstawie. Źródło: [opracowanie własne].\relax }}{13}{figure.caption.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Projekt klatki Helmholtza z klinostatem. Źródło: opracowanie własne\relax }}{14}{figure.caption.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Przykładowe części modelu komputerowego projektu.\relax }}{15}{figure.caption.8}%
 \babel@toc {british}{}
 \babel@toc {polish}{}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Przykładowe części modelu komputerowego projektu.\relax }}{15}{figure.caption.7}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Zamontowana przeciwwaga. Źródło: [opracowanie własne].\relax }}{17}{figure.caption.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Zamontowana przeciwwaga.\relax }}{16}{figure.caption.8}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Przekładnie klinostatu. Źródło: [opracowanie własne]\relax }}{18}{figure.caption.10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Przekładnie klinostatu.\relax }}{17}{figure.caption.9}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Spreparowane półsfery z oznaczonymi elementami. \textbf {1} - otwory montażu kamery, \textbf {2} - otwory montażu oświetlenia, \textbf {3} - otwory montażu koszyka, \textbf {4} - wcięcia oraz otwory montażu łącznika półsfer, \textbf {5} - wcięcia oraz otwory montażu półsfery z wałem obrotowym. Źródło: [opracowanie własne]\relax }}{19}{figure.caption.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Elektronika klinostatu\relax }}{18}{figure.caption.10}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Łącznik montowany na półserze komory.\relax }}{19}{figure.caption.12}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Elektronika klinostatu\relax }}{20}{figure.caption.13}%
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 

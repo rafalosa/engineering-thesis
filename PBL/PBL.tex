@@ -1,8 +1,8 @@
 \graphicspath{{./PBL/images}}
 
-\chapter{Projekt PBL}
+\chapter{Udział w projekcie PBL}
 
-Uczenie poprzez realizację projektów (ang. \angver{Project Based Learning}, PBL) jest metodą przyswajania wiedzy oraz nabywania kompetencji przez studentów poprzez rozwiązywanie rzeczywistych problemów. Dzięki takiemu podejściu, nowe informacje są zapamiętywane na zasadzie ich implementacji w rzeczywistości oraz daje to okazję do aplikacji już wcześniej zdobytej wiedzy i umiejętności. Pozwala to na głębsze zrozumienie treści oraz rozwój innych umiejętności takich jak krytyczne myślenie, praca w grupie i umiejętności komunikacyjne \cite{bib:PBL}. Rozdział ten poświęcony jest takiemu projektowi, w którym brałem udział dwa lata temu. Jego tematyką było zaprojektowanie układu laboratoryjnego przeznaczonego do badań nad wzrostem struktur biologicznych w warunkach mikrograwitacji z wyłączeniem ziemskiego pola magnetycznego.
+Uczenie poprzez realizację projektów (ang. \angver{Project Based Learning}, PBL) jest metodą przyswajania wiedzy oraz nabywania kompetencji przez studentów poprzez rozwiązywanie rzeczywistych problemów. Dzięki takiemu podejściu, nowe informacje są zapamiętywane na zasadzie ich implementacji w rzeczywistości oraz daje to okazję do aplikacji już wcześniej zdobytej wiedzy i umiejętności. Pozwala to na głębsze zrozumienie treści oraz rozwój innych umiejętności takich jak krytyczne myślenie, praca w grupie i umiejętności komunikacyjne \cite{bib:PBL}. Rozdział ten poświęcony jest takiemu projektowi, w którym brałem udział dwa lata temu. Jego tematyką było zaprojektowanie układu laboratoryjnego przeznaczonego do badań nad wzrostem struktur biologicznych w warunkach mikrograwitacji z wyłączeniem ziemskiego pola magnetycznego. Moje subiektywne odczucia odnośnie tej metody nauki są bardzo pozytywne. Jestem pewien iż dzięki temu projektowi nauczyłem się znacznie więcej niż w przypadku konwencjonalnych metod nauczania. Nabyłem wiele umiejętności praktycznych np. metody tworzenia symulacji opartych o obliczenia równoległe, projektowanie elementów mechanicznych, tworzenie zapotrzebowań na części i surowce oraz wiele innych, które przydały się później w osobistych projektach, praktykach czy też pracy zawodowej.
 
 \section{Cel projektu} \label{cel_projektu}
 
@@ -12,7 +12,7 @@ Celem wspomnianego projektu było zaprojektowanie układu laboratoryjnego, skła
    mikrograwitacji bez ziemskiego pola magnetycznego. Klatka Helmholtza jest złożeniem trzech
     par cewek Helmholtza w takiej konfiguracji aby osie magnetyczne każdej z par było
      prostopadłe do pozostałych. Pozwala to wytworzyć wektor indukjcji magnetycznej o dowolnym
-      kierunku przestrzennym i bardzo wysokiej jednorodności. Wysoka jednorodność jest kluczowa
+      kierunku przestrzennym i bardzo wysokiej jednorodności. Wizualizację wyników z przeprowadzonych symulacji można zobaczyć na Rys. \ref{fig:polemag} . Wysoka jednorodność jest kluczowa
        aby generowany wektor indukcji magnetycznej był stały w objętości przeprowadzanego
         eksperymentu. W związku z wymaganiami projektu, wewnętrzna konstrukcja klinostatu
          musiała zostać wykonana tak, aby mieć jak najmniejszy wpływ na panujące wewnątrz
@@ -34,52 +34,57 @@ Celem wspomnianego projektu było zaprojektowanie układu laboratoryjnego, skła
                          klatką Helmholtza przedstawiony został na Rys.
                           \ref{fig:klatka_helmholtza}.
                           
+                                
+  \begin{figure}[t]
+         	\centering
+         	\includegraphics[scale=0.22]{pole_mag}
+         	\caption{Wizualizacja objętości w której spełniony jest założony warunek jednorodności pola magnetycznego. Maksymalny odchyłek spełniający założenie przyjęto za 1\% wartości centralnej. Zielona sfera reprezentuje komorę środowiskową wybraną na podstawie. Źródło: [opracowanie własne].} 
+         	\label{fig:polemag}
+  \end{figure}
+  
 
 \begin{figure}
 	\centering
 	\includegraphics[scale=0.3]{klinostat_klatka}
-	\caption{Projekt klatki Helmholtza z klinostatem.} 
-	\caption*{Źródło: opracowanie własne}
+	\caption{Projekt klatki Helmholtza z klinostatem. Źródło: opracowanie własne} 
 	\label{fig:klatka_helmholtza}
 \end{figure}
 
 \section{Konstrukcja klinostatu} \label{konstrukcja}
 
 Ten podrozdział poświęcony został krótkiemu opisowi konstrukcji samego klinostatu
- zaprojektowanego w ramach PBL. Zaprojektowane urządzenie jest klinostatem o dwóch stopniach
-  swobody, każdy stopień posiada swój osobny napęd. Oznacza to iż jest to maszyna RPM, natomiast
-   jest możliwość uruchomienia go w trybach klinostatu 2-D oraz 3-D jak opisano w podrozdziale
-    \ref{klinostat3d}. Zewnętrzna rama klinostatu wykonana została z rur polipropylenowych (PP)
-     stabilizowanych włóknem szklanym. Odcinki rur wraz z kształtkami 90$^\circ$ oraz
-      czwórnikami zostały połączone metodą polifuzji termicznej (zgrzewanie). Tego typu rury
-       wykorzystywane są w instalacjach centralnego ogrzewania, dzięki czemu ich koszt jest
-        niski. Konstrukcję ramy przedstawiono na Rys. \ref{fig:rama_klinostatu}. Przeprowadzone
-         analizy elementów skończonych (FEM), wskazały iż materiał ten posiada wystarczającą
-          wytrzymałość aby wykorzystać go jako element strukturalny ramy klinostatu. Jako wał
-           obrotowy wykorzystano rurę aluminiową o średnicy \SI{12}{mm}. Wykorzystanie
-            konwencjonalnych łożysk kulowych w konstrukcji klinostatu nie było wskazane ze
-             względu na wymagania opisane w podrozdziale \ref{cel_projektu}. Z tego powodu każdy
-              z interfejsów obrotowych stanowią tuleje ślizgowe wykonane z materiału
-               iglidur$\copyright$, zaprojektowanego przez firmę IGUS. Większość pozostałych
-                elementów została wykonana w technologii druku przestrzennego z materiału PETG.
-                 Konstrukcję jednego z czterech czwórników ramy przedstawiono na Rys.
-                  \ref{fig:czwórnik}. Wewnętrzny stopień swobody składa się z kulistej komory
-                   środowiskowej, która posiada swój dedykowany komputer o niskiej mocy,
-                    monitorujący panujące wewnątrz warunki, oraz sterujący oświetleniem.
-                     Zasilanie do wnętrza komory doprowadzone jest przez szereg złącz
-                      ślizgowych, a przewody poprowadzone są wewnątrz ramy klinostatu. Podobne
-                       rozwiązanie wykorzystano w obwodzie doprowadzjącym wodę, przewody
-                        prowadzone są wewnątrz ramy klinostatu, a przy elementach obrotowych
-                         zastosowano kolanka obrotowe. Rozmiar komory oraz typ i moc oświetlenia
-                          zostały wyznaczone na podstawie wyników symulacji stworzonych na rzecz
-                           projektu. Jej projekt przedstawiony został na Rys. \ref{fig:komora}.
-                            Mocowania śrubowe zostały w większości zrealizowane za pomocą śrub
-                             poliamidowych (PA). Komora została zaprojektowana tak, aby
-                              umożliwić operatorowi dostęp do jej wnętrza bez konieczności jej
-                               demontażu z ramy klinostatu.
-                               
+zaprojektowanego w ramach PBL. Zaprojektowane urządzenie jest klinostatem o dwóch stopniach
+swobody, każdy stopień posiada swój osobny napęd. Oznacza to iż jest to maszyna RPM, natomiast
+jest możliwość uruchomienia go w trybach klinostatu 2-D oraz 3-D jak opisano w podrozdziale
+\ref{klinostat3d}. Zewnętrzna rama klinostatu wykonana została z rur polipropylenowych (PP)
+stabilizowanych włóknem szklanym. Odcinki rur wraz z kształtkami 90$^\circ$ oraz
+czwórnikami zostały połączone metodą polifuzji termicznej (zgrzewanie). Tego typu rury
+wykorzystywane są w instalacjach centralnego ogrzewania, dzięki czemu ich koszt jest
+niski. Konstrukcję ramy przedstawiono na Rys. \ref{fig:rama_klinostatu}.Przeprowadzone
+analizy elementów skończonych (FEM), wskazały iż materiał ten posiada wystarczającą
+wytrzymałość aby wykorzystać go jako element strukturalny ramy klinostatu. Jako wał
+obrotowy wykorzystano rurę aluminiową o średnicy \SI{12}{mm}. Wykorzystanie
+konwencjonalnych łożysk kulowych w konstrukcji klinostatu nie było wskazane ze
+względu na wymagania opisane w podrozdziale \ref{cel_projektu}. Z tego powodu każdy
+z interfejsów obrotowych stanowią tuleje ślizgowe wykonane z materiału
+iglidur$\copyright$, zaprojektowanego przez firmę IGUS. Większość pozostałych
+elementów została wykonana w technologii druku przestrzennego z materiału PETG.
+Konstrukcję jednego z czterech czwórników ramy przedstawiono na Rys.
+\ref{fig:czwórnik}. Wewnętrzny stopień swobody składa się z kulistej komory
+środowiskowej, która posiada swój dedykowany komputer o niskiej mocy,
+monitorujący panujące wewnątrz warunki, oraz sterujący oświetleniem.
+Zasilanie do wnętrza komory doprowadzone jest przez szereg złącz
+ślizgowych, a przewody poprowadzone są wewnątrz ramy klinostatu. Podobne
+rozwiązanie wykorzystano w obwodzie doprowadzjącym wodę, przewody
+prowadzone są wewnątrz ramy klinostatu, a przy elementach obrotowych
+zastosowano kolanka obrotowe. Rozmiar komory oraz typ i moc oświetlenia
+zostały wyznaczone na podstawie wyników symulacji stworzonych na rzecz
+projektu. Jej projekt przedstawiony został na Rys. \ref{fig:komora}.
+Mocowania śrubowe zostały w większości zrealizowane za pomocą śrub
+poliamidowych (PA). Komora została zaprojektowana tak, aby umożliwić operatorowi dostęp do jej
+wnętrza bez konieczności jej demontażu z ramy klinostatu.
 
-\begin{figure}
+\begin{figure}[]
 	\centering
 	
 	\begin{subfigure}[b]{.49\textwidth}
@@ -103,7 +108,7 @@ Ten podrozdział poświęcony został krótkiemu opisowi konstrukcji samego klin
 		\caption{Komora środowiskowa.} 
 		\label{fig:komora}
 	\end{subfigure}
-
+	
 	\caption{Przykładowe części modelu komputerowego projektu.}
 	\caption*{Źródło: opracowanie własne}
 	
@@ -112,10 +117,8 @@ Ten podrozdział poświęcony został krótkiemu opisowi konstrukcji samego klin
 
 \section{Modyfikacje projektu}
 
-Jako, że projekt rozpoczął się na początku pandemii COVID-19, niemożliwe było prowadzenie prac
- konstrukcyjnych równolegle z postępem prac modelowych. Spowodowało to zakończenie się projektu
-  na fazie ukończonego modelu komputerowego. Konstrukcję całego urządzenia rozpoczęto rok po
-   zakończeniu się projektu PBL w zespole dwuosobowym w którego skład wchodziłem. Podczas
+Z uwagi na dużą złożoność realizowanego projektu, zakończył się on na etapie ukończonego modelu komputerowego. Konstrukcję całego urządzenia rozpoczęto rok po
+   zakończeniu się projektu PBL w zespole dwuosobowym, w którego skład wchodziłem. Podczas
     konstrukcji napotkano wiele problemów, które nie zostały przewidziane na etapie prac
      projektowych i wymagały stworzenia nowych elementów urządzenia, bądź zmodyfikowania już
       istniejących komponentów. Oprócz tego wymagane było również stworzenie metod
@@ -138,13 +141,12 @@ Podczas pierwszych prób uruchomieniowych klinostatu napotkano okresowo pojawiaj
        zapewnienia odpowiedniej masy. Skonstruowana oraz zamontowana przeciwwaga przedstawiona
         została na Rys. \ref{fig:przeciwwaga}.
 
-\begin{figure}[ht]
+\begin{figure}[H]
 	\centering
 	\setlength{\fboxsep}{0pt}
 	\setlength{\fboxrule}{1pt}
-	\fbox{\includegraphics[scale=0.06]{przeciwwaga}}
-	\caption{Zamontowana przeciwwaga.} 
-	\caption*{Źródło: opracowanie własne}
+	\fbox{\includegraphics[scale=0.045]{przeciwwaga}}
+	\caption{Zamontowana przeciwwaga. Źródło: [opracowanie własne].} 
 	\label{fig:przeciwwaga}
 \end{figure}
 
@@ -160,8 +162,7 @@ Drugą bardzo istotną dla działania klinostatu modfikacją, był projekt i kon
        napędowym klinostatu. Model przekładni widoczny jest na Rys. \ref{fig:projekt
        	 przekładni}. Przekładnia składa się z dwóch kół zębatych o średnicach kolejno $WSTAWIĆ$
          i $WSTAWIĆ$ oraz ilości zębów odpowiednio $WSTAWIĆ$ i $WSTAWIĆ$. Duże koło zębate jest
-          łożyskowane w dwóch miejscach przez konwencjonalne łożyska kulowe, ze względu na to iż
-           przekładnie znajdują się w wystarczająco dużej odległości od objętości jednorodnego
+          łożyskowane w dwóch miejscach przez konwencjonalne łożyska kulowe, ze względu na to iż przekładnie znajdują się w wystarczająco dużej odległości od objętości jednorodnego
             pola magnetycznego. Na małym kole zębatym umieszczono dodatkowo wpusty umożliwiajace
              montaż enkoderów, jeśli zajdzie taka potrzeba. Całość zamknięta została w korpusie
               odpowiedzialnym za ochronę kół przez pyłem oraz zapobiegającym wydostaniu się
@@ -174,32 +175,63 @@ Drugą bardzo istotną dla działania klinostatu modfikacją, był projekt i kon
 \begin{figure}
 	\centering
 	
-	\begin{subfigure}[b]{.49\textwidth}
+	\begin{subfigure}[h]{.49\textwidth}
 		\centering
-		\includegraphics[width=.6\textwidth]{przekladnia_projekt_exploded_shaded}
+		\includegraphics[width=.4\textwidth]{przekladnia_projekt_exploded_shaded}
 		\caption{Projekt przekładni} 
 		\label{fig:projekt przekładni}
 	\end{subfigure}
 	\hfill%
-	\begin{subfigure}[b]{.49\textwidth}
+	\begin{subfigure}[h]{.49\textwidth}
 		\centering
 		\setlength{\fboxsep}{0pt}
 		\setlength{\fboxrule}{1pt}
-		\fbox{\includegraphics[width=\textwidth, angle=-90]{przekladnia_gotowa}}
+		\fbox{\includegraphics[width=.8\textwidth, angle=-90]{przekladnia_gotowa}}
 		\caption{Skonstruowana przekładnia.} 
-		
 		\label{fig:gotowa przekładnia}
 	\end{subfigure}
 
-	\caption{Przekładnie klinostatu.}
-	\caption*{Źródło: opracowanie własne}
+	\caption{Przekładnie klinostatu. Źródło: [opracowanie własne]}
 	
 \end{figure}
 
+\section{Komora środowiskowa}
+
+Wewnętrzny stopień swobody klinostatu składa się z kulistej komory środowiskowej. Jej celem jest zapewnienie odpowiedniego podłoża do wzrostu badanej struktury, oraz dopilnowanie optymalnych warunków wzrostowych poprzez dostarczanie wody ze składnikami odżywczymi oraz odpowiednie oświetlenie. Konieczne jest odizolowanie obiektu eksperymentu od zewnętrznych źródeł światła, aby zapewnić kontrolowane oraz powtarzalne warunki przeprowadzania eksperymentu. Komora wykonana została z globusa o średnicy \SI{320}{mm} poddanego specjalnej obróbce mechanicznej. Półsfery zostały odseparowane wzdłuż zgrzewu przy pomocy tokarki, a następnie każda z nich została poddana odpowiedniej obróbce. Model półsfer komory przedstawiono na Rys. \ref{fig:globus}. Na zawętrznej części komory wyznaczono miejsca przeznaczone do montażu kamer oraz oświetlenia. Półsfery łączone są za pomocą specjalnych, drukowanych łączników, które nasuwają się na przygotowane wcięcia i łączone są przez połączenia śrubowe (Rys. \ref{fig:łącznik_globus}). Analogicznie rozwiązanie zostało połączenie komory z wałem obrotowym. W środku komory zamontowany jest kosz uprawny, którego wysokość może być regulowana w zależności od spodziewanej wysokości struktury wzrostowej. W koszu zamontowane są specjalne elementy mocowania przewodu doprowadzającego wodę, które również wyznaczają jego spiralny tor. Wewnątrz komory rozmieszczony jest szereg czujników monitorujących warunki wzrostowe oraz jej orientację względem wektora grawitacji w czasie. Na komorze zamontowany jest również komputer niskiej mocy, odpowiedzialny za zbieranie danych z czujników i przesyłanie ich do głównej jednostki kontroli poprzez sygnał bezprzewodowy.
+
+\begin{figure}
+	\centering
+	
+	\begin{subfigure}[b]{.49\textwidth}
+			\centering
+			\includegraphics[width=.6\textwidth]{top_half_marked}
+			\caption{Półsfera górna.} 
+			\label{fig:globus_top}
+	\end{subfigure}
+	\hfill%
+	\begin{subfigure}[b]{.49\textwidth}
+			\centering
+			\includegraphics[width=.6\textwidth]{bot_half_marked}
+			\caption{Półsfera dolna.} 
+			\label{fig:globus_bot}
+	\end{subfigure}
+	\caption{Spreparowane półsfery z oznaczonymi elementami. \textbf{1} - otwory montażu kamery, \textbf{2} - otwory montażu oświetlenia, \textbf{3} - otwory montażu koszyka, \textbf{4} - wcięcia oraz otwory montażu łącznika półsfer, \textbf{5} - wcięcia oraz otwory montażu półsfery z wałem obrotowym. Źródło: [opracowanie własne]}
+	\label{fig:globus}
+
+\end{figure}
+
+\begin{figure}
+	
+	\centering
+	\includegraphics[scale=.25]{bottom_half_connector_framed}
+	\caption{Łącznik montowany na półserze komory.} 
+	\label{fig:łącznik_globus}
+	
+\end{figure}
 
 \section{Kontrola klinostatu}
 
-Jak wspomniano w podrozdziale \ref{konstrukcja}, oba stopnie swobody klinostatu mają swoją niezależną jednostkę napędową. Jako źródło ruchu obrotowego wybrano silniki krokowe w standardzie NEMA 17, model 42BYGHM809. Są to silniki o rozdzielczości ruchu 400 kroków na pełen obrót, oraz momencie obrotowym wynoszącym \SI{0,48}{Nm}. Podłączone są one do opisanych wcześniej przekładni walcowych, których wyjścia zakończone są kołami pasowymi. Ruch obrotowy jest następnie przenoszony przez pasy zębate, które ostatecznie łączą się z głównymi kołami napędowymi klinostatu na szczycie konstrukcji jego podstawy. Na silniki krokowe zdecydowano się ze względu na prostotę ich sterowania oraz możliwość dokładnego pozycjonowania w razie potrzeby rozszerzenia urządzenia o taką funkcjonalność. Silniki podłączone są bezpośrednio do obudowy zawierającej elektronikę sterującą klinostatem. Elektronika sterująca składa się z platformy Arduino Leonardo stanowiącej sterownik układu, nakładki RAMPS dla platform Arduino, dwóch sterowników silników krokowych A4988, konwertera UART/USB w celu komunikacji z komputerem przez interfejs USB oraz przetwornicy step-up, konwertującej napięcie zasilacza 12V do 36V dla zasilania silników. W obudowie zamontowany został również wentylator chłodzący sterowniki silników krokowych. Zmontowany układ przedstawiony został na Rys. \ref{fig:elektronika}.
+Jak wspomniano w podrozdziale \ref{konstrukcja}, oba stopnie swobody klinostatu mają swoją niezależną jednostkę napędową. Jako źródło ruchu obrotowego wybrano silniki krokowe w standardzie NEMA 17, model 42BYGHM809. Są to silniki o rozdzielczości ruchu 400 kroków na pełen obrót, oraz momencie obrotowym wynoszącym \SI{0,48}{Nm}. Podłączone są one do opisanych wcześniej przekładni walcowych, których wyjścia zakończone są kołami pasowymi. Ruch obrotowy jest następnie przenoszony przez pasy zębate, które ostatecznie łączą się z głównymi kołami napędowymi klinostatu na szczycie konstrukcji jego podstawy. Na silniki krokowe zdecydowano się ze względu na prostotę ich sterowania oraz możliwość dokładnego pozycjonowania w razie potrzeby rozszerzenia urządzenia o taką funkcjonalność. Silniki podłączone są bezpośrednio do obudowy zawierającej elektronikę sterującą klinostatem. Elektronika sterująca składa się z platformy Arduino Leonardo stanowiącej sterownik układu, nakładki RAMPS dla platform Arduino, dwóch sterowników silników krokowych A4988, konwertera UART/USB w celu komunikacji z komputerem przez interfejs USB oraz przetwornicy step-up, konwertującej napięcie zasilacza 12V do 36V dla zasilania silników. W obudowie zamontowany został również wentylator chłodzący sterowniki silników. Zmontowany układ przedstawiony został na Rys. \ref{fig:elektronika}. 
 
 \begin{figure}[ht]
 	\centering
