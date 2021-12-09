@@ -1,8 +1,23 @@
 \chapter{Sterownik kontrolera klinostatu}
 
-\section{Założenia sterownika}
+Jako kontroler klinostatu rozumie się jednostkę odpowiadającą za bezpośrednie sterowanie silnikami oraz pompą wody. Jest to część systemu z którą operator urządzenia nie wchodzi bezpośrednio w interakcję, a sterowana jest ona pośrednio przez interfejs użytkownika aplikacji, poprzez system wbudowanych komend. Kontroler stanowi całkowicie odrębne urządzenie niż komputer z którego sterowany jest klinostat, natomiast nie jest ono w stanie działać samodzielnie bez kontaktu z rdzeniem systemu. Sterownik wymagał implementacji w niskopoziomowym języku programowania, ze względu na wybór platformy z mikroprocesorem typu AVR. Wybrany został w tym celu język C++. W dalszej części pracy do programu kontrolera klinostatu będzie 
+\section{Założenia funkcjonalne sterownika}
+
+Poniżej wymieniono funkcjonalności oraz założenia jakie musiał spełniać sterownik kontrolera klinostatu:
+
+\begin{itemize}
+	
+	\item Sterowanie silników powinno być całkowicie niezależne od reszty funkcjonalności programu. Oznacza to iż odbieranie oraz wysyłanie danych przez port szeregowy powinno odbywać się równolegle z operacjami obsługującymi układ napędowy.
+	\item Silniki domyślnie powinny uruchamiać się oraz zatrzymywać ze stałym przyspieszeniem tzn. prędkości obrotowe powinny zmieniać się liniowo podczas rozruchu oraz zatrzymania klinostatu.
+	\item Sterownik powinien również niezależnie śledzić czas, który upłynął od rozpoczecia programu. Z pomocą odmierzania czasu obliczana jest objętość wody wpompowanej do komory środowiskowej.
+
+\end{itemize}
+
+
 
 \section{Platforma}
+
+
 
 \section{Rejestry mikrokontrolera}
 
