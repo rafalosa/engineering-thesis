@@ -13,15 +13,20 @@ Poniżej wymieniono funkcjonalności oraz założenia jakie musiał spełniać s
 
 \end{itemize}
 
+COŚ TUTAJ JESZCZE DODAĆ, NA RAZIE PLACEHOLDER.
 
 
 \section{Platforma}
 
-
+Wspomniano wcześniej iż w skład elektroniki klinostatu wchodzi płytka rozwojowa Arduino Leonardo. Jednostka mikrokontrolera (ang. \angver{microcontroller unit}, MCU) znajdująca się na tym rodzaju płytki to ATmega32U4 produkowana przez firmę Atmel. Jest to 8-bitowy MCU typu AVR, który w przypadku płytki Arduino taktowany jest za pomocą zewnętrznego oscylatora kwarcowego o częstotliwości \SI{16}{MHz}. Platforma ta została wybrana na etapie projektowym, kierując się jej dostępnością, popularnością, ceną oraz parametrami. Platformy Arduino w odniesieniu do samodzielnych kontrolerów AVR oferują znacznie prostsze metody programowania poprzez udostępnienie wielu bibliotek, które interfejsują z samymi rejestrami mikrokontrolera. Powoduje to efektywnie programowanie wyższego poziomu. Minusem takiego podejścia jest konieczność umieszczania ów bibliotek w pamięci kontrolera, która jest ograniczona. Dodatkowo platformy arduino posiadają stały fragment kodu, który nie jest modyfikowalny przez użytkownika, tzw. bootloader, który również zajmuje część dostępnej pamięci. MCU zdecydowano się programować w czystym języku C++, z uwagi na to iż biblioteki Arduino nie oferowały wymaganej funkcjonalności. Bootloader umieszczony na platformach Arduino umożliwia programowanie przez interfejs USB. W przypadku sterownika klinostatu, bootloader usunięto, a układ programowano poprzez programator USBASP (ang. \angver{USB AVR Serial Programmer}).
 
 \section{Rejestry mikrokontrolera}
 
-\section{Rejestry typu timer}
+W przypadku mikrokontrolerów AVR, kontrolowanie oraz konfiguracja ich peryferiów odbywa się poprzez konfigurowanie wewnętrznych rejestrów. Rejestry mikrokontrolera są po prostu lokalizacjami w pamięci, których wartość można odczytać lub ją zmodyfikować. Część rejestrów MCU wyznacza jego pamięć RAM (ang. \angver{Random Access Memory}), w której przechowywane są tymczasowo wartości zmiennych lub stałych, które potrzebne są w momencie wykonywania programu. Inna część rejestrów to tzw. rejestry specjalne (ang. \angver{Special Function Register}, SFR), których zadaniem jest wcześniej wspomniana kontrola oraz konfiguracja elementów mikrokontrolera.
+
+\section{Rejestry układu czasowo-licznikowego}
+
+Jednym z ważnych dla działania klinostatu typów SFR są rejestry odpowiedzialne za konfigurację oraz kontrolę układów czasowo-licznikowych. Układy te cyklicznie inkrementują wartość przechowywaną w pewnych rejestrze wraz z cyklami zegara MCU. Znając jego częstotliwość taktowania pozwala to efektywnie odmierzać czas programu.
 
 \section{Przerwania programowe}
 
