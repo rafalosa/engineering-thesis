@@ -26,11 +26,22 @@ W przypadku mikrokontrolerów AVR, kontrolowanie oraz konfiguracja ich peryferi�
 
 \section{Rejestry układu czasowo-licznikowego}
 
-Jednym z ważnych dla działania klinostatu typów SFR są rejestry odpowiedzialne za konfigurację oraz kontrolę układów czasowo-licznikowych. Układy te cyklicznie inkrementują wartość przechowywaną w pewnych rejestrze wraz z cyklami zegara MCU. Znając jego częstotliwość taktowania pozwala to efektywnie odmierzać czas programu.
+Jednym z ważnych dla działania klinostatu typów SFR są rejestry odpowiedzialne za konfigurację oraz kontrolę układów czasowo-licznikowych. Układy te cyklicznie inkrementują wartość przechowywaną w pewnych rejestrze wraz z cyklami zegara MCU. Znając jego częstotliwość taktowania pozwala to efektywnie odmierzać czas programu. Atmega32U4 posiada 4 rejestry tego typu: 
+\begin{itemize}
+	\item jeden rejestr 8-bitowy, Timer/Counter 0
+	\item dwa rejestry 16-bitowe, Timer/Counter 1 i 3
+	\item jeden rejestr 10-bitowy o dużej szybkości, Timer/Counter 4
+\end{itemize}
+
+W sterowniku wykorzystane zostały 3 z dostępnych rejestrów układów czasowo-licznikowych. Dwa rejestry 16-bitowe przeznaczone zostały do wyznaczania interwałów czasowych między kolejnymi krokami silników, natomiast rejestr 8-bitowy przeznaczony został na odmierzanie czasu programu. Układy czasowo-licznikowe nie muszą inkrementować wartości w rejestrze co każdy cykl procesora, mogą to robić co określoną ilość cykli. Taką ilość cykli wyznacza prescaler, który również jest konfigurowany przez odpowiednie rejestry. Wybranym trybem pracy układów czasowo-licznikowych jest tryb CTC (ang. \angver{Clear Timer on Compare Match}), który zeruje rejestr wartości układu licznika kiedy osiąga on ustaloną programowo wartość. Pozwala to na sterowanie długością interwałów pomiędzy impulsami za pomocą operacji na wartościach w  rejestrach OCRnA lub OCRnB (ang. \angver{Output Compare Register}), gdzie $n$ jest numerem układu. Konfiguracja owych układów zostanie opisana w dalszych podrozdziałach.
 
 \section{Przerwania programowe}
 
+Przerwania programowe są kolejną, kluczową funkcją mikrokontrolera dla spełnienia założeń sterownika klinostatu. Przerwania programowe umożliwiają przerwanie wykonywania programu w dowolnym jego miejscu i tymczasowe przekazanie kontroli do specjalnej części kodu zwanej procedurą obsługi przerwania (ang. \angver{Interrupt Service Routine}, ISR). Umożliwia to wykonywanie kluczowych operacji niezależnie od tego co w danej chwili wykonuje główny program kontrolera. Ważne jest, aby zakończyć operacje związane z ISR we względnie krótkim czasie, aby uniknąć wyzwolenia kolejnego przerwania w trakcie obsługi obecnego. Może się również zdarzyć iż obsługa przerwań zostaje wyłączona na czas wykonania ISR, co może sprawić iż zostanie ominięte zdarzenie kluczowe dla kontroli systemu. Przerwania mogą zostać wywołane przez wiele sygnałów począwszy od flag dokonania konwersji przez wewnętrzny przetwornik analogowo-cyfrowy, po wysoki stan napięciowy przyłożony do jednego z terminali mikrokontrolera. W przypadku sterownika klinostatu przerwania wywoływane są poprzez osiągnięcie wartości zadanych w OCRnA przez rejestry TCNTn (ilość zliczeń licznika), a procedury obsługi przerwań odpowiedzialne są za wykonanie pojedynczego kroku silnika krokowego oraz za inkrementowanie liczby milisekund upłyniętych od momentu uruchomienia programu.
+
 \section{Sterowanie silnikami krokowymi}
+
+Jak wspomniano w założeniach programu, wymogiem była możliwość liniowej zmiany prędkości obrotowej silników krokowych. Pomaga to odciążyć silniki podczas fazy rozruchowej klinostatu, ograniczając gubione kroki. Szybkość obrotów silników krokowych zależy od częstotliwości wykonywanych kroków. Częstotliwość kroków zależna jest od czasu mijającego pomiędzy kolejnymi krokami. To właśnie ten interwał jest wielkością, która jest bezpośrednio sterowana z poziomu programu kontrolera.
 
 \section{Komunikacja USB}
 
