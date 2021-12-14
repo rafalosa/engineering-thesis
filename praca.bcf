@@ -2373,6 +2373,7 @@
     <bcf:citekey order="27">bib:rpmy</bcf:citekey>
     <bcf:citekey order="28">bib:rpmy</bcf:citekey>
     <bcf:citekey order="29">bib:PBL</bcf:citekey>
+    <bcf:citekey order="30">bib:krokowe_przyspieszenie</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

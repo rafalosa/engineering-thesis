@@ -35,6 +35,7 @@
 \onehalfspacing
 \usepackage{graphicx}
 \usepackage[backend=biber]{biblatex}
+\usepackage{xcolor}
 
 \addbibresource{Bibliografia/bibliografia.bib}
 
@@ -42,12 +43,28 @@
 \frenchspacing
 
 \usepackage{listings}
+
+\definecolor{codeback}{rgb}{0.95,0.95,0.95}
+\definecolor{linenum}{rgb}{0.45,0.45,0.45}
+\definecolor{commentcolor}{rgb}{0,0.6,0}
+
 \lstset{
-	language={},
 	basicstyle=\ttfamily,
 	keywordstyle=\lst@ifdisplaystyle\color{blue}\fi,
-	commentstyle=\color{gray}
+	commentstyle=\color{commentcolor},
+	breaklines=true,                 
+	captionpos=b,       
+	numbers=left,                    
+	numbersep=3pt,
+	backgroundcolor=\color{codeback},
+	keywordstyle=\color{magenta},
+	numberstyle=\scriptsize\color{linenum},
+	basicstyle=\ttfamily\footnotesize,
+	title="listing"
 }
+
+
+\renewcommand{\lstlistingname}{Fragment kodu}
 
 %%%%%%%%%
 
