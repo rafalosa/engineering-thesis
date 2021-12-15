@@ -27,11 +27,11 @@
 \babel@toc {british}{}
 \babel@toc {polish}{}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Wizualizacja objętości w której spełniony jest założony warunek jednorodności pola magnetycznego. Maksymalny odchyłek spełniający założenie przyjęto za 1\% wartości centralnej. Zielona sfera reprezentuje komorę środowiskową wybraną na podstawie. Źródło: [opracowanie własne].\relax }}{13}{figure.caption.6}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Wizualizacja objętości w której spełniony jest założony warunek jednorodności pola magnetycznego. Maksymalny odchyłek spełniający założenie przyjęto za 1\% wartości centralnej. Zielona sfera reprezentuje komorę środowiskową wybraną na jej podstawie. Źródło: [opracowanie własne].\relax }}{13}{figure.caption.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Projekt klatki Helmholtza z klinostatem. Źródło: opracowanie własne\relax }}{14}{figure.caption.7}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Projekt klatki Helmholtza z klinostatem. Źródło: [opracowanie własne]\relax }}{14}{figure.caption.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Przykładowe części modelu komputerowego projektu.\relax }}{15}{figure.caption.8}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Przykładowe części modelu komputerowego projektu. Źródło: [opracowanie własne]\relax }}{15}{figure.caption.8}%
 \babel@toc {british}{}
 \babel@toc {polish}{}
 \defcounter {refsection}{0}\relax 
@@ -65,9 +65,21 @@
 \babel@toc {british}{}
 \babel@toc {polish}{}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Schemat blokowy programu kontrolera. Źródło: opracowanie własne.\relax }}{31}{figure.caption.16}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Elementy mechaniki klinostatu, widok przekroju. Czerwoną linią zaznaczona jest ścieżka transferu ruchu obrotowego przez pasy. \textbf {1} - główne koło napędowe klinostatu, \textbf {2} - koło pasowe przekładni, \textbf {3} - przekładnia o redukcji 4:1 do której przymocowany jest silnik krokowy. Źródło: opracowanie własne\relax }}{30}{figure.caption.16}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Schemat blokowy programu kontrolera. Źródło: [opracowanie własne]\relax }}{32}{figure.caption.17}%
+\babel@toc {british}{}
+\babel@toc {polish}{}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
+\babel@toc {british}{}
+\babel@toc {polish}{}
+\babel@toc {british}{}
+\babel@toc {polish}{}
+\babel@toc {british}{}
+\babel@toc {polish}{}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Schemat budowy wątkowej aplikacji. Źródło: [opracowanie własne]\relax }}{38}{figure.caption.18}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 

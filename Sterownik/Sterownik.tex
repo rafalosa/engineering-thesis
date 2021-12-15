@@ -2,7 +2,7 @@
 
 \chapter{Sterownik kontrolera klinostatu}
 
-Jako kontroler klinostatu rozumie się jednostkę odpowiadającą za bezpośrednie sterowanie silnikami oraz pompą wody. Jest to część systemu z którą operator urządzenia nie wchodzi bezpośrednio w interakcję, a sterowana jest ona pośrednio przez interfejs użytkownika aplikacji, poprzez system wbudowanych komend. Kontroler stanowi całkowicie odrębne urządzenie niż komputer z którego sterowany jest klinostat, natomiast nie jest ono w stanie działać samodzielnie bez kontaktu z rdzeniem systemu. Sterownik wymagał implementacji w niskopoziomowym języku programowania, ze względu na wybór platformy z mikroprocesorem typu AVR. Wybrany został w tym celu język C++. W dalszej części pracy do programu kontrolera klinostatu będzie 
+Jako kontroler klinostatu rozumie się jednostkę odpowiadającą za bezpośrednie sterowanie silnikami oraz pompą wody. Jest to część systemu z którą operator urządzenia nie wchodzi bezpośrednio w interakcję, a sterowana jest ona pośrednio przez interfejs użytkownika aplikacji, poprzez system wbudowanych komend. Kontroler stanowi całkowicie odrębne urządzenie niż komputer z którego sterowany jest klinostat, natomiast nie jest ono w stanie działać samodzielnie bez kontaktu z rdzeniem systemu. Sterownik wymagał implementacji w niskopoziomowym języku programowania, ze względu na wybór platformy z mikroprocesorem typu AVR - wybrany został w tym celu język C++.
 \section{Założenia funkcjonalne sterownika}
 
 Poniżej wymieniono funkcjonalności oraz założenia jakie musiał spełniać sterownik kontrolera klinostatu:
@@ -15,12 +15,10 @@ Poniżej wymieniono funkcjonalności oraz założenia jakie musiał spełniać s
 
 \end{itemize}
 
-COŚ TUTAJ JESZCZE DODAĆ, NA RAZIE PLACEHOLDER.
-
 
 \section{Platforma}
 
-Wspomniano wcześniej iż w skład elektroniki klinostatu wchodzi płytka rozwojowa Arduino Leonardo. Jednostka mikrokontrolera (ang. \angver{microcontroller unit}, MCU) znajdująca się na tym rodzaju płytki to ATmega32U4 produkowana przez firmę Atmel. Jest to 8-bitowy MCU typu AVR, który w przypadku płytki Arduino taktowany jest za pomocą zewnętrznego oscylatora kwarcowego o częstotliwości \SI{16}{MHz}. Platforma ta została wybrana na etapie projektowym, kierując się jej dostępnością, popularnością, ceną oraz parametrami. Platformy Arduino w odniesieniu do samodzielnych kontrolerów AVR oferują znacznie prostsze metody programowania poprzez udostępnienie wielu bibliotek, które interfejsują z samymi rejestrami mikrokontrolera. Powoduje to efektywnie programowanie wyższego poziomu. Minusem takiego podejścia jest konieczność umieszczania ów bibliotek w pamięci kontrolera, która jest ograniczona. Dodatkowo platformy arduino posiadają stały fragment kodu, który nie jest modyfikowalny przez użytkownika, tzw. bootloader, który również zajmuje część dostępnej pamięci. MCU zdecydowano się programować w czystym języku C++, z uwagi na to iż biblioteki Arduino nie oferowały wymaganej funkcjonalności. Bootloader umieszczony na platformach Arduino umożliwia programowanie przez interfejs USB. W przypadku sterownika klinostatu, bootloader usunięto, a układ programowano poprzez programator USBASP (ang. \angver{USB AVR Serial Programmer}).
+Wspomniano wcześniej iż w skład elektroniki klinostatu wchodzi płytka rozwojowa Arduino Leonardo. Jednostka mikrokontrolera (ang. \angver{microcontroller unit}, MCU) znajdująca się na tym rodzaju płytki to ATmega32U4 produkowana przez firmę Atmel. Jest to 8-bitowy MCU typu AVR, który w przypadku płytki Arduino taktowany jest za pomocą zewnętrznego oscylatora kwarcowego o częstotliwości \SI{16}{MHz} \cite{bib:nota_katalogowa}. Platforma ta została wybrana na etapie projektowym, kierując się jej dostępnością, popularnością, ceną oraz parametrami. Platformy Arduino w odniesieniu do samodzielnych kontrolerów AVR oferują znacznie prostsze metody programowania poprzez udostępnienie wielu bibliotek, które interfejsują z samymi rejestrami mikrokontrolera. Powoduje to efektywnie programowanie wyższego poziomu. Minusem takiego podejścia jest konieczność umieszczania ów bibliotek w pamięci kontrolera, która jest ograniczona. Dodatkowo platformy arduino posiadają stały fragment kodu, który nie jest modyfikowalny przez użytkownika, tzw. bootloader, który również zajmuje część dostępnej pamięci. MCU zdecydowano się programować w czystym języku C++, z uwagi na to iż biblioteki Arduino nie oferowały wymaganej funkcjonalności. Bootloader umieszczony na platformach Arduino umożliwia programowanie przez interfejs USB. W przypadku sterownika klinostatu, bootloader usunięto, a układ programowano poprzez programator USBASP (ang. \angver{USB AVR Serial Programmer}).
 
 \section{Rejestry mikrokontrolera}
 
@@ -28,7 +26,7 @@ W przypadku mikrokontrolerów AVR, kontrolowanie oraz konfiguracja ich peryferi�
 
 \section{Rejestry układu czasowo-licznikowego}
 
-Jednym z ważnych dla działania klinostatu typów SFR są rejestry odpowiedzialne za konfigurację oraz kontrolę układów czasowo-licznikowych. Układy te cyklicznie inkrementują wartość przechowywaną w pewnych rejestrze wraz z cyklami zegara MCU. Znając jego częstotliwość taktowania pozwala to efektywnie odmierzać czas programu. Atmega32U4 posiada 4 rejestry tego typu: 
+Jednym z ważnych dla działania klinostatu typów SFR są rejestry odpowiedzialne za konfigurację oraz kontrolę układów czasowo-licznikowych. Układy te cyklicznie inkrementują wartość przechowywaną w pewnych rejestrze wraz z cyklami zegara MCU. Znając jego częstotliwość taktowania pozwala to efektywnie odmierzać czas programu. Atmega32U4 posiada 4 rejestry tego typu \cite{bib:nota_katalogowa}: 
 \begin{itemize}
 	\item jeden rejestr 8-bitowy, Timer/Counter 0
 	\item dwa rejestry 16-bitowe, Timer/Counter 1 i 3
@@ -132,20 +130,29 @@ Oprócz konfiguracji programowej ważne jest również uwzględnienie fizyczej b
 #define STEPS_PER_REVOLUTION (STEPPER_STEPS_PER_REVOLUTION*MICROSTEP_DIVISION)
 \end{lstlisting}
 
+\begin{figure}[h]
+	
+	\centering
+	\includegraphics[scale=0.3]{klinostat_przekroj}
+	\caption{Elementy mechaniki klinostatu, widok przekroju. Czerwoną linią zaznaczona jest ścieżka transferu ruchu obrotowego przez pasy. \textbf{1} - główne koło napędowe klinostatu, \textbf{2} - koło pasowe przekładni, \textbf{3} - przekładnia o redukcji 4:1 do której przymocowany jest silnik krokowy. Źródło: opracowanie własne} 
+	\label{fig:klinostat_mechanika}
+\end{figure}
+
 Zależność \ref{eq:obroty_klinostat} przedstawia sposób w jaki wyznaczany jest minimalny interwał czasowy układów czasowo-licznikowych na podstawie prędkości zadanej przez operatora.
 
 \begin{equation}\label{eq:obroty_klinostat}
 	c_{min} = \frac{f_{CPU} \cdot 60 \cdot N_S}{P_{DIV} \cdot R_{MOT} \cdot \omega_T \cdot R_G \cdot N_M}
+	\vspace{3mm}
 \end{equation}
-gdzie $f_{CPU}$ - częstotliwość taktowania MCU  [Hz], $N_S$ - ilość zębów na kole pasowym przekładni, $P_{DIV}$ - wartość prescalera układu czasowo-licznikowego, $R_{MOT}$ - rozdzielczość silników krokowych [krok/obrót], $\omega_T$ - docelowa prędkość obrotów danego stopnia swobody klinostatu [RPM], $R_G$ - redukcja obrotów przekładni (4 w przypadku redukcji 4:1), $N_M$ - liczba zębów na głównym kole napędowym klinostatu.
+gdzie $f_{CPU}$ - częstotliwość taktowania MCU  [Hz], $N_S$ - ilość zębów na kole pasowym przekładni, $P_{DIV}$ - wartość prescalera układu czasowo-licznikowego, $R_{MOT}$ - rozdzielczość silników krokowych [kroki/obrót], $\omega_T$ - docelowa prędkość obrotów danego stopnia swobody klinostatu [RPM], $R_G$ - redukcja obrotów przekładni (4 w przypadku redukcji 4:1), $N_M$ - liczba zębów na głównym kole napędowym klinostatu.
 
 \section{Schemat blokowy sterownika klinostatu}
 
 Na Rys. \ref{fig:schemat_sterownik} przestawiony został przebieg programu kontrolera klinostatu za pomocą schematu blokowego. Po podłączeniu zasilania logiki klinostatu program od razu rozpoczyna działanie od inicjalizacji używanych układów oraz wyprowadzeń MCU. Następie kontrola przekazywana jest do pętli głównej, która będzie wykonywać się cyklicznie, aż do odłączenia zasilania układu. Pętla główna składa się z funkcji sprawdzającej czy w buforze portu szeregowego znajduje się komenda czekająca na odebranie i interpretację. Jeśli taka komenda została znaleziona, to wywoływana jest funkcja \textbf{handleSerial}, której zadaniem jest odebranie ów komendy i w zależności od jej rodzaju odebrać lub nie, dodatkowe dane po niej następujące. Jeśli odebrana komenda wpływa na zmianę trybu pracy urządzenia, to aktualizowana jest flaga obecnego statusu programu. W dalszym ciągu sterownika obsługiwane jest działanie pompy - sprawdzane jest czy obecnie pompa jest włączona, jeśli jest to sprawdzany jest czas, który upłynął od jej włączenia. W zależności ile taki czas wynosi pompa jest wyłączana, lub pozostaje włączona. Na końcu pętli wykonywna jest funkcja \textbf{checkMotorStatus}, która sprawdza flagi określające status silników, wyłączając działanie procedur obsługi przerwań w razie takiej konieczności (powoduje to zatrzymanie silników). Podczas działania głównej pętli aktywne są również trzy procedury obsługi przerwań, które niezależnie od jej statusu, sterują silnikami krokowymi oraz odmierzają czas.
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{sterownik_schemat}
-	\caption{Schemat blokowy programu kontrolera. Źródło: opracowanie własne.} 
+	\caption{Schemat blokowy programu kontrolera. Źródło: [opracowanie własne]} 
 	\label{fig:schemat_sterownik}
 \end{figure}
 
@@ -158,10 +165,9 @@ Z uwagi na małą złożoność struktury plików sterownika nie zdecydowano si�
 	\item install: reguła odpowiedzialna za zaprogramowanie układu z użyciem pliku .hex i programatora USBASP
 	\item clean: metoda usuwająca pliki pośredniczące w procesie kompilacji
 \end{itemize}
-Taki zestaw reguł okazał się całkowicie wystarczający w procesie rozwoju programu, oraz pozwala nawet osobie bez specjalnej wiedzy na samodzielne zaprogramowanie układu. Projekt można skompilować na każdym systemie z zainstalowanym kompilatorem \textbf{avr-gcc} oraz narzędziem \textbf{avrdude}.
+Taki zestaw reguł okazał się całkowicie wystarczający w procesie rozwoju programu, oraz pozwala nawet osobie bez specjalnej wiedzy na samodzielne zaprogramowanie układu. Projekt można skompilować oraz zaprogramować na każdym systemie z zainstalowanym łańcuchem narzędziowym (ang. \angver{toolchain}) \textbf{avr-gcc} oraz narzędziem \textbf{avrdude}.
 
 \begin{lstlisting}[caption=Makefile sterownika]
-
 CC=avr-gcc
 CFLAGS= -Os -DF_CPU=16000000UL -mmcu=atmega32u4
 
@@ -176,5 +182,4 @@ install.%: %.hex
 
 clean:
 	rm -f *.out
-
 \end{lstlisting}
