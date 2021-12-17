@@ -9,4 +9,4 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {3.5}Makefile sterownika}{33}{lstlisting.3.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.1}Metoda wykrywająca odłączone urządzenie.}{45}{lstlisting.4.1}%
+\contentsline {lstlisting}{\numberline {4.1}Metoda wykrywająca odłączone urządzenie.}{46}{lstlisting.4.1}%

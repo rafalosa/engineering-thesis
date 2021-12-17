@@ -171,19 +171,42 @@ Bardzo istotnym elementem interfejsu jest konsola w której wyświetlane są kom
 	
 \end{figure}
 
+Cały interfejs podzielony jest na dwie zakładki. Wszystkie dotychczas wymienione elementy znajdują się w zakładce \textit{Clinostat control}. Druga zakładka (\textit{Diagnostics}) zawiera wykresy przedstawiajace zbierane dane w czasie rzeczywistym. Na samym dole zakładni znadjują się dwa przyciski, których zadaniem jest zapisanie lub wyczyszczenie aktualnych danych. Wciśnięcie przycisku \textbf{Save data} spowoduje pojawienie się okna dialogowego w którym należy wybrać ścieżkę oraz nazwę zapisywanego pliku csv. Przycisk \textbf{Clear data} pyta użytkownika czy na pewno chce usunąć zebrane dane, a następnie wykonuje jego wolę. Przykładowe wykresy z rzeczywistymi danymi przedstawione zostały na Rys. \ref{fig:wykresy_gui}.
+
+\begin{figure}[h]
+	\centering
+	
+	\begin{subfigure}[h]{.49\textwidth}
+		\centering
+		\includegraphics[scale=1.7]{grav_surowe}
+		\caption{Dane z akcelerometru.}
+		\label{fig:grav_raw}
+	\end{subfigure}
+	\hfill%
+	\begin{subfigure}[h]{.49\textwidth}
+		\centering
+		\includegraphics[scale=1.7]{grav_sr}
+		\caption{Uśrednione wartości grawitacji.} 
+		\label{fig:grav_mean}
+	\end{subfigure}
+	
+	\caption{Przykładowe wykresy. Źródło: [opracowanie własne]}
+	\label{fig:wykresy_gui}
+	
+\end{figure}
+
 \section{Drzewo projektu}
 
-Aplikacja napisana jest w konwencji obiektowej. Aby zachować zorganizowaną strukturę kodu źródłowego podzielony został on na wiele plików, w których znajdują się definicje klas o podobnych cechach lub działaniu. Rozdział ten służy przedstawieniu struktury aplikacji oraz krótkiemu opisowi, funkcji jakie pełni każdy z plików. Drzewo programu widoczne jest na Rys. \ref{fig:drzewo}. 
+Aplikacja napisana jest w konwencji obiektowej. Aby zachować zorganizowaną strukturę kodu źródłowego podzielony został on na wiele plików, w których znajdują się definicje klas o podobnych cechach lub działaniu. Rozdział ten służy przedstawieniu struktury aplikacji oraz krótkiemu opisowi, funkcji jakie pełni każdy z plików. Drzewo programu widoczne jest na Rys. \ref{fig:drzewo}. Plikiem uruchomieniowym jest plik \textbf{main.py}, który zawiera definicję klasy samej aplikacji oraz klasę menedżera interfejsu, odpowiedzialnego za zmiany aktywności jego elementów. Poszczególne moduły aplikacji odnoszą się do interfejsu właśnie przez ten obiekt, co znacznie poprawia czytelność oraz organizację kodu. W folderze \textit{config} znajduje się plik konfiguracyjny \textbf{config.yaml}, który zawiera adres oraz port na których postawiony ma zostać serwer TCP. Folder \textit{modules} zawiera kolejne katalogi \textit{backend}, \textit{gui} oraz \textit{properties}. W katalogu \textit{backend} umieszczono wszystkie pliki zawierające obiekty sterujące lub tworzące mechanizmy aplikacji, które nie są widoczne dla użytkownika. Zawierają się w tym pliki \textbf{clinostat\_com.py} zawierający moduł komunikacyjny klinostatu, \textbf{custom\_thread.py} w którym znajduje się zmodyfikowana klasa wątku oraz plik \textbf{data\_socket.py}, który zawiera definicję obiektu serwera TCP. Katalog \textit{gui} zawiera pliki związane z elementami interfejsu graficznego, na które składają się \textbf{segments.py} zawierający definicje poszczególnych modułów interfejsu oraz plik \textbf{custom\_tk\_widgets.py}, który zawiera pojedyncze, zmodyfikowane elementy interfejsu stworzone na potrzeby aplikacji. W ostatnim folderze \textit{properties} znajduje się plik \textbf{properties.py}, który zawiera specjalnie przygotowane struktury danych, przechowywujące zmienne, flagi oraz obiekty kluczowe dla działania aplikacji.
 
 \begin{figure}[h]
 	
 	\centering
-	\includegraphics[scale=.4]{tree}
+	\includegraphics[scale=.34]{tree}
 	\caption{Struktura plików aplikacji. Źródło: [opracowanie własne]} 
 	\label{fig:drzewo}
 	
 \end{figure}
-Plikiem uruchomieniowym jest plik \textbf{main.py}, który zawiera definicję klasy samej aplikacji oraz klasę menedżera interfejsu, odpowiedzialnego za zmiany aktywności jego elementów. Poszczególne moduły aplikacji odnoszą się do interfejsu właśnie przez ten obiekt, co znacznie poprawia czytelność oraz organizację kodu. W folderze \textit{config} znajduje się plik konfiguracyjny \textbf{config.yaml}, który zawiera adres oraz port na których postawiony ma zostać serwer TCP. Folder \textit{modules} zawiera kolejne katalogi \textit{backend}, \textit{gui} oraz \textit{properties}. W katalogu \textit{backend} umieszczono wszystkie pliki zawierające obiekty sterujące lub tworzące mechanizmy aplikacji, które nie są widoczne dla użytkownika. Zawierają się w tym pliki \textbf{clinostat\_com.py} zawierający moduł komunikacyjny klinostatu, \textbf{custom\_thread.py} w którym znajduje się zmodyfikowana klasa wątku oraz plik \textbf{data\_socket.py}, który zawiera definicję obiektu serwera TCP. Katalog \textit{gui} zawiera pliki związane z elementami interfejsu graficznego, na które składają się \textbf{segments.py} zawierający definicje poszczególnych modułów interfejsu oraz plik \textbf{custom\_tk\_widgets.py}, który zawiera pojedyncze, zmodyfikowane elementy interfejsu stworzone na potrzeby aplikacji. W ostatnim folderze \textit{properties} znajduje się plik \textbf{properties.py}, który zawiera specjalnie przygotowane struktury danych, przechowywujące zmienne, flagi oraz obiekty kluczowe dla działania aplikacji. 
 \section{Zabezpieczenia aplikacji}
 
 Po wstępnym ukończeniu aplikacji poddano ją szczegółowym testom, przeprowadzanym przez kilka niezwiązanych z nią wcześniej osób. Miało to na celu wykrycie ukrytych błędów, przetestowanie jak największej ilości kombinacji wysłanych komend, zbadanie reakcji aplikacji na nadużycie dostępnych operacji oraz innych niepożądanych efektów, których wystąpienie nie zostało przewidziane na etapie jej tworzenia. Testy te pozwoliły na stworzenie zabezpieczeń uniemożliwiających operatorowi urządzenia wykonania niedozwolonych operacji oraz wykrywających konflikty powstałych na drodze interakcji operacji użytkownika oraz zachodzących w tle zautomatyzowanych procesów. Najprostszym zabezpieczeniem obecnym w aplikacji jest tymczasowa dezaktywacja interfejsu odpowiedzialnego za komendy wysyłane przez port szeregowy. Jeśli wysłana komenda powoduje wysłane odpowiedzi ze strony kontrolera klinostatu, to część elementów interfejsu zostaje dezaktywowana do czasu jej otrzymania, lub do maksymalnego czasu oczekiwania. Zapobiega to wysłaniu przez użytkownika komendy w momencie gdy do klinostatu przekazywane są przykładowo bajty określające prędkość obrotów. Aplikacja posiada również zautomatyzowany system wysyłania komendy nawadniania w momencie kiedy minął odpowiedni czas. Stwarza to możliwość próby wysłania takiej komendy podczas np. oczekiwania na odpowiedź ze strony klinostatu. Brak zabezpieczeń spowodowałby uzyskanie nieprawidłowej odpowiedzi z urządzenia co doprowadziłoby do błędu. Problem ten rozwiązano tworząc obiekt specjalnego wątku, który wykorzustuje strukturę synchronizacyjną \textbf{lock} aby uniemożliwić dostęp innym wątkom do portu szeregowego podczas oczekiwania na komendę. Po zakończeniu pracy wątek odblokowywuje port szeregowy i zakolejkowana instrukcja zostaje wysłana. Klinostat może zostać również fizycznie odłączony od komputera podczas pracy. Aplikację oraz urządzenie chronią tutaj dwa mechanizmy. Pierwszy z nich wynika z samej konstrukcji elektroniki klinostatu, która wymaga połączenia z komputerem przez port USB aby uzyskać zasilanie sekcji logicznej. Zerwanie połączenia automatycznie spowoduje odcięcie zasilania kontrolera i zatrzymanie klinostatu. Natomiast wysłanie komendy do odłączonego portu wygeneruje błąd w aplikacji, co skutkuje jej zawieszeniem. Rozwiązaniem tego problemu było stworzenie specjalnej metody \textbf{device\_likely\_unplugged} klasy aplikacji, która wykonywana jest przez wątek obsługujący port szeregowy w momencie zgłoszenia przez niego wyjątku (ang. \angver{exception}). Wykonanie tej metody powoduje całkowite zresetowanie aplikacji i wyświetlenie stosownego komunikatu o błędzie, sugerującego sprawdzenie połączenia przewodu USB.
