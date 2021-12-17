@@ -63,15 +63,9 @@
 	title="listing"
 }
 
-
 \renewcommand{\lstlistingname}{Fragment kodu}
 
-%%%%%%%%%
 
-%%%% TODO LIST GENERATOR %%%%%%%%%
-
-%\usepackage{tikz}
-%\usepackage{manfnt}   % dangerous sign 
 \usepackage{color}
 \definecolor{brickred}      {cmyk}{0   , 0.89, 0.94, 0.28}
 
@@ -163,6 +157,13 @@
 \newcommand{\titlefont}{\fontfamily{phv}\fontsize{18}{18}\selectfont}
 \newcommand{\otherfont}{\fontfamily{phv}\fontsize{14}{14}\selectfont}
 
+\newcommand{\kierownikfont}{\normalfont\fontsize{13}{13}\bfseries\selectfont}
+\newcommand{\tytulfont}{\normalfont\fontsize{18}{18}\bfseries\selectfont}
+\newcommand{\imiefont}{\normalfont\fontsize{18}{18}\bfseries\selectfont}
+\newcommand{\fizykafont}{\normalfont\fontsize{12}{12}\bfseries\selectfont}
+\newcommand{\inzfont}{\normalfont\fontsize{26}{26}\bfseries\selectfont}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -178,9 +179,13 @@
 \newcommand{\polsl}{Politechnika Śląska}
 \newcommand{\wydzial}{Instytut Fizyki}
 \newcommand{\kierunek}{Kierunek: Fizyka Techniczna}
+\newcommand{\tytulang}{Reconstruction and analysis of simulated microgravity in laboratory conditions with a clinostat.}
+
 \begin{document}
 
 %\kslistofremarks 
+	
+
 	
 %%%%%%%%%%%%%%%%%%  STRONA TYTULOWA %%%%%%%%%%%%%%%%%%%
 \pagestyle{empty}
@@ -189,47 +194,43 @@
 	             bottom=2.5cm,%
 	             left=3cm,
 	             right=2.5cm}
-	\sffamily
+	\rmfamily
 	\rule{0cm}{0cm}
 	
 	\begin{center}
-	\includegraphics[width=45mm]{logo.jpg}
-	\end{center} 
-	\vspace{1cm}
-	\begin{center}
-	\headerfont \polsl
+		\fizykafont POLITECHNIKA ŚLĄSKA\\
+		 INSTYTUT FIZYKI - Centrum Naukowo-Dydaktyczne
 	\end{center}
+
+	\vspace{10mm}
+
 	\begin{center}
-	\headerfont \wydzial
-	\end{center}
-	\begin{center}
-	\headerfont \kierunek
-	\end{center}
-	\vfill
-	\begin{center}
-	\titlefont Praca dyplomowa inżynierska
-	\end{center}
-	\vfill
 	
-	\begin{center}
-	\otherfont \tytul\par
+	
+		\imiefont \autor\\
+		\vspace{5mm}
+		\fizykafont Fizyka Techniczna\\
+		\vspace{40mm}
+		\inzfont PROJEKT INŻYNIERSKI\\
+		\vspace{17mm}
+		\tytulfont\tytul\\
+		\vspace{5mm}
+		\tytulfont\tytulang
+
 	\end{center}
+
+	\vspace{21mm}
 	
-	\vfill
-	
-	\vfill
-	 
 	\noindent\vbox
 	{
-		\hbox{\otherfont Autor: \autor}
+		\hbox{\kierownikfont Kierujący pracą: \promotor}
 		\vspace{12pt}
-		\hbox{\otherfont Promotor: \promotor}
-		\vspace{12pt}
+
 	}
 	\vfill 
  
    \begin{center}
-   \otherfont Gliwice,  \miesiac\ \the\year
+   \fizykafont Gliwice,  \miesiac\ \the\year
    \end{center}	
 	\restoregeometry
 }
@@ -315,10 +316,10 @@ Do pracy dołączona jest płyta CD z~następującą zawartością:
 \end{itemize}
 
 \listoffigures
-\addcontentsline{toc}{chapter}{Spis rysunkow}
+\addcontentsline{toc}{chapter}{Spis rysunków}
 
 \listof{lstlisting}{Spis fragmentów kodu}
-\addcontentsline{toc}{chapter}{Spis fragmentóœ kodu}
+\addcontentsline{toc}{chapter}{Spis fragmentów kodu}
 
 \listoftables
 \addcontentsline{toc}{chapter}{Spis tabel}
