@@ -84,7 +84,7 @@ Powyżej widoczny jest zestaw komendy, które klinostat zwraca podczas operacji 
 
 Konfiguracja sterownika zawarta jest w plikach \textbf{driver\_config.cpp} oraz \textbf{driver\_config.hpp}. W tych plikach znajdują się definicje oraz implementacje funkcji i makr odpowiedzialnych za odpowiednie ustawienie rejestrów związanych z układami czasowo-licznikowymi, oraz aktywacją przerwań z nimi związanych. Oprócz tego w plikach tych zawarto również definicję procedury obsługi przerwania odpowiedzialnej za odmierzanie czasu.
 
-\begin{lstlisting}[language=C++, caption=Przykładowa konfiguracja pierwszego układu czasowo-licznikowego]
+\begin{lstlisting}[language=C++, caption=Przykładowa konfiguracja pierwszego układu czasowo-licznikowego.]
 void SETUP_TIMER1_INTERRUPTS(){
 	cli(); // Temporarily disable interrupts.
 	TCCR1A = 0;
@@ -101,7 +101,7 @@ Układu czasowo-licznikowe 1 i 3 skonfigurowane są identycznie, pracują w tryb
 
 W pliku \textbf{driver\_config.hpp} znajdują się również deklaracje wejść i wyjść mikrokontrolera. Przypisują one funkcje wykonywania kroków, włączania wi wyłączania pompy oraz hamulca silników do odpowiednich wyprowadzeń mikrokontrolera. Przy zmianach fizycznej konfiguracji urządzenia, przystosowanie do niej programu jest bardzo proste, dzięki przyjętemu nazewnictwu.
 
-\begin{lstlisting}[language=C++, caption=Konfiguracja wyprowadzeń]
+\begin{lstlisting}[language=C++, caption=Konfiguracja wyprowadzeń.]
 #define CHAMBER_STEP 0 // PD0 for chamber step pin.
 #define FRAME_STEP 1 // PD1 for frame step pin.
 #define ENABLE_PIN 4 // PB4 for enable pin for both motors.
@@ -134,7 +134,7 @@ Oprócz konfiguracji programowej ważne jest również uwzględnienie fizyczej b
 	
 	\centering
 	\includegraphics[scale=0.3]{klinostat_przekroj}
-	\caption{Elementy mechaniki klinostatu, widok przekroju. Czerwoną linią zaznaczona jest ścieżka transferu ruchu obrotowego przez pasy. \textbf{1} - główne koło napędowe klinostatu, \textbf{2} - koło pasowe przekładni, \textbf{3} - przekładnia o redukcji 4:1 do której przymocowany jest silnik krokowy. Źródło: opracowanie własne} 
+	\caption{Elementy mechaniki klinostatu, widok przekroju. Czerwoną linią zaznaczona jest ścieżka transferu ruchu obrotowego przez pasy. \textbf{1} - główne koło napędowe klinostatu, \textbf{2} - koło pasowe przekładni, \textbf{3} - przekładnia o redukcji 4:1 do której przymocowany jest silnik krokowy. Źródło: [opracowanie własne]} 
 	\label{fig:klinostat_mechanika}
 \end{figure}
 
@@ -144,7 +144,7 @@ Zależność \ref{eq:obroty_klinostat} przedstawia sposób w jaki wyznaczany jes
 	c_{min} = \frac{f_{CPU} \cdot 60 \cdot N_S}{P_{DIV} \cdot R_{MOT} \cdot \omega_T \cdot R_G \cdot N_M}
 	\vspace{3mm}
 \end{equation}
-gdzie $f_{CPU}$ - częstotliwość taktowania MCU  [Hz], $N_S$ - ilość zębów na kole pasowym przekładni, $P_{DIV}$ - wartość prescalera układu czasowo-licznikowego, $R_{MOT}$ - rozdzielczość silników krokowych [kroki/obrót], $\omega_T$ - docelowa prędkość obrotów danego stopnia swobody klinostatu [RPM], $R_G$ - redukcja obrotów przekładni (4 w przypadku redukcji 4:1), $N_M$ - liczba zębów na głównym kole napędowym klinostatu.
+gdzie $f_{CPU}$ - częstotliwość taktowania MCU  [Hz], $N_S$ - liczba zębów na kole pasowym przekładni, $P_{DIV}$ - wartość prescalera układu czasowo-licznikowego, $R_{MOT}$ - rozdzielczość silników krokowych [kroki/obrót], $\omega_T$ - docelowa prędkość obrotów danego stopnia swobody klinostatu [RPM], $R_G$ - redukcja obrotów przekładni (4 w przypadku redukcji 4:1), $N_M$ - liczba zębów na głównym kole napędowym klinostatu.
 
 \section{Schemat blokowy sterownika klinostatu}
 

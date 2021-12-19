@@ -65,7 +65,7 @@
 \babel@toc {british}{}
 \babel@toc {polish}{}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Elementy mechaniki klinostatu, widok przekroju. Czerwoną linią zaznaczona jest ścieżka transferu ruchu obrotowego przez pasy. \textbf {1} - główne koło napędowe klinostatu, \textbf {2} - koło pasowe przekładni, \textbf {3} - przekładnia o redukcji 4:1 do której przymocowany jest silnik krokowy. Źródło: opracowanie własne\relax }}{30}{figure.caption.16}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Elementy mechaniki klinostatu, widok przekroju. Czerwoną linią zaznaczona jest ścieżka transferu ruchu obrotowego przez pasy. \textbf {1} - główne koło napędowe klinostatu, \textbf {2} - koło pasowe przekładni, \textbf {3} - przekładnia o redukcji 4:1 do której przymocowany jest silnik krokowy. Źródło: [opracowanie własne]\relax }}{30}{figure.caption.16}%
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Schemat blokowy programu kontrolera. Źródło: [opracowanie własne]\relax }}{32}{figure.caption.17}%
 \babel@toc {british}{}
@@ -100,6 +100,14 @@
 \babel@toc {polish}{}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
+\babel@toc {british}{}
+\babel@toc {polish}{}
+\babel@toc {british}{}
+\babel@toc {polish}{}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Schemat wiadomości wymienianych pomiędzy urządzeniami.\relax }}{49}{figure.caption.26}%
+\babel@toc {british}{}
+\babel@toc {polish}{}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \babel@toc {british}{}

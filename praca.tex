@@ -60,11 +60,12 @@
 	keywordstyle=\color{magenta},
 	numberstyle=\scriptsize\color{linenum},
 	basicstyle=\ttfamily\footnotesize,
-	title="listing"
+	title="listing",
+	tabsize=2,
+	showstringspaces=false
 }
 
 \renewcommand{\lstlistingname}{Fragment kodu}
-
 
 \usepackage{color}
 \definecolor{brickred}      {cmyk}{0   , 0.89, 0.94, 0.28}
@@ -234,22 +235,16 @@
    \end{center}	
 	\restoregeometry
 }
-  
 
 \cleardoublepage
  
-
 \rmfamily
 \normalfont
 
-
-
-%%%%%%%%%%%%%%%%%% SPIS TRESCI %%%%%%%%%%%%%%%%%%%%%%
 \pagenumbering{Roman}
 \pagestyle{tylkoNumeryStron}
 \tableofcontents
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setcounter{stronyPozaNumeracja}{\value{page}}
 \mainmatter
 
@@ -262,7 +257,6 @@
 \cleardoublepage
 
 \pagestyle{NumeryStronNazwyRozdzialow}
-%%%%%%%%%%%%%% wlasciwa tresc pracy %%%%%%%%%%%%%%%%%
 
 
 \include{Wstep/Wstęp}
@@ -280,7 +274,6 @@
 \include{Podsumowanie/Podsumowanie}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \backmatter
 \pagenumbering{Roman}
 \stepcounter{stronyPozaNumeracja}
@@ -288,32 +281,24 @@
 
 \pagestyle{tylkoNumeryStron}
 
-%%%%%%%%%%% bibliografia %%%%%%%%%%%%
-%\bibliographystyle{plplain}
-%\bibliography{Bibliografia/bibliografia}
+
 \printbibliography
 \addcontentsline{toc}{chapter}{Bibliografia}
-%%%%%%%%%  DODATKI %%%%%%%%%%%%%%%%%%% 
+
 
 \begin{appendices} 
 
-
-\chapter*{Dokumentacja techniczna}
-\addcontentsline{toc}{chapter}{Dokumentacja techniczna}
-
-
 \include{skroty}
 
+%\chapter*{Zawartość dołączonej płyty}
+%\addcontentsline{toc}{chapter}{Zawartość dołączonej płyty}
 
-\chapter*{Zawartość dołączonej płyty}
-\addcontentsline{toc}{chapter}{Zawartość dołączonej płyty}
-
-Do pracy dołączona jest płyta CD z~następującą zawartością:
-\begin{itemize}
-\item praca w~formacie \texttt{pdf},
-\item źródła programu,
-\item zbiory danych użyte w~eksperymentach.
-\end{itemize}
+%Do pracy dołączona jest płyta CD z~następującą zawartością:
+%\begin{itemize}
+%\item praca w~formacie \texttt{pdf},
+%\item źródła programu,
+%\item zbiory danych użyte w~eksperymentach.
+%\end{itemize}
 
 \listoffigures
 \addcontentsline{toc}{chapter}{Spis rysunków}
@@ -321,11 +306,8 @@ Do pracy dołączona jest płyta CD z~następującą zawartością:
 \listof{lstlisting}{Spis fragmentów kodu}
 \addcontentsline{toc}{chapter}{Spis fragmentów kodu}
 
-\listoftables
-\addcontentsline{toc}{chapter}{Spis tabel}
 	
 \end{appendices}
-
 
 \end{document}
 
