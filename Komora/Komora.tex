@@ -42,7 +42,7 @@ Kiedy połączenie zostanie pomyślnie nawiązane rozpoczyna się proces wymiany
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=.5]{ramka}
-	\caption{Schemat wiadomości wymienianych pomiędzy urządzeniami.} 
+	\caption{Schemat wiadomości wymienianych pomiędzy urządzeniami. Źródło: [orpacowanie własne]} 
 	\label{fig:ramka danych}
 \end{figure}
 
@@ -53,7 +53,7 @@ W celach uproszczenia starano się dobrać czujniki tak aby wszystkie mogły zos
 \begin{itemize}
 	\item Akcelerometr LIS3DH, magistrala I$^2$C
 	\item Termometr MCP9808, magistrala I$^2$C
-	\item ADC ADS1115, magistrala I$^2$C
+	\item Konwerter analogowo-cyfrowy ADS1115, magistrala I$^2$C
 	\item Moduł kamery OV5648, port USB
 	
 \end{itemize}
@@ -123,7 +123,25 @@ class ADS1115ADC(I2CSensor):
 \end{lstlisting}
 
 Kamery również obsługiwane są z poziomu programu poprzez wywoływanie poleceń w powłoce systemowej za pomocą biblioteki \textbf{subprocess}. W tym celu przygotowano prosty skrypt \textbf{take\_pic.sh}, który wykonuje zdjęcia za pomocą obu kamer przy użyciu interfejsu Video4Linux. Konieczne jest aby obie kamery posiadały odpowiednie nazwy adapterów portu a, konkretnie \textbf{/dev/videoCam0} oraz \textbf{/dev/videoCam1}. Uzyskiwane jest to za pomocą pliku reguł \textbf{99-name-cameras.rules}, który rozpoznaje unikatowe dla kamer cechy i tworzy odpowiednie dowiązania symboliczne. Plik ten został również umieszczony w repozytorium projektu i należy umieścić go w katalogu \textbf{/etc/udev/rules.d/} w systemie plików komputera komory środowiskowej. Należy zaznaczyć iż numery umieszczone w pliku reguł odpowiadają konkretnym egzamplarzom kamer, a więc jeśli zostaną one zamienione, należy ów kod również zamienić.
-\begin{lstlisting}[caption={Plik reguł.}]
+\begin{lstlisting}[caption={Plik reguł \textbf{99-name-cameras.rules}.}]
 SUBSYSTEM=="video4linux", ENV{ID_REVISION}=="5131",SYMLINK+="videoCam0"
 SUBSYSTEM=="video4linux", ENV{ID_REVISION}=="5127",SYMLINK+="videoCam1"
 \end{lstlisting}
+
+Na etapie projektu przetestowano kilka dostępnych na rynku czujników wilgotności gleby. Każdy z nich charakteryzował się szybkim postępem korozji elementów wystawionych na działanie wody. Stworzono więc autorski czujnik składający się z dwóch igieł wykonanych ze stali nierdzewnej. Pomiar wilgotności odbywa się poprzez pomiar napięcia układu, w którym układ igieł wbitych w podłoże wzrostowe działa jak rezystor o zmiennym oporze. Aby ograniczyć korozję czujnika do minimum, zasilanie układu jest włączane jedynie na czas pomiaru, trawjący 3s. Na Rys. \ref{fig:czujnik wilg} przedstawiono głowicę wykonanego czujnika wilgotności. Napięcie z układu mierzone jest poprzez dołączony do komputera przetwornik analogowo-cyfrowy. Na Rys. \ref{fig:czujnik wilg sch} widoczny jest prosty schemat elektryczny obwodu czujnika. Zasilanie doprowadzone jest do układu poprzez tranzystor (w tym wypadku jest to fototranzystor zawarty w transoptorze), sterowany z poziomu programu komputera komory środowiskowej. Aby poprawnie interpretować poziomy napięć, konieczny jest pierwszy pomiar napięcia dla głowicy czujnika zanurzonej w wodzie z docelowym stężeniem substancji odżywczych. Dalsze pomiary są następnie przeprowadzane w odniesieniu do tak przygotowanej referencji.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=.4]{schemat_wilg}
+	\caption{Schemat elektryczny obwodu czujnika. Źródło: [opracowanie własne]} 
+	\label{fig:czujnik wilg sch}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\setlength{\fboxsep}{0pt}
+	\setlength{\fboxrule}{1pt}
+	\fbox{\includegraphics[scale=.15,angle=90]{czujnik_wilg}}
+	\caption{Wykonana głowica czujnika wilgotności podłoża. Źródło: [orpacowanie własne]} 
+	\label{fig:czujnik wilg}
+\end{figure}

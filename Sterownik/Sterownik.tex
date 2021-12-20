@@ -52,7 +52,7 @@ gdzie $c_0$ - początkowy interwał czasowy, $n$ - numer iteracji. W taki sposó
 \section{Komunikacja USB}
 
 Sterowanie klinostatem odbywa się poprzez wysyłanie odpowiednich komend przez interfejs USB do kontrolera. Elementem pośrednim pomiędzy sterującym komputerem, a kontrolerem jest konwerter sygnałów protokołu USB na sygnały logiczne TTL (ang. \angver{transistor-transistor logic}) wykorzystywane przez wewnętrzny układ UART mikrokontrolera. UART również kontrolowany jest poprzez konfigurację odpowiednich SFR, a następnie odebrane dane są pobieranie z rejestru UDR1.
-\begin{lstlisting}[language=C++, caption=commands.hpp]
+\begin{lstlisting}[language=C++, caption=Plik \textbf{commands.hpp}.]
 // Functional commands	
 #define RUN_COMMAND 0x01
 #define HOME_COMMAND 0x02
@@ -110,7 +110,7 @@ W pliku \textbf{driver\_config.hpp} znajdują się również deklaracje wejść 
 
 Oprócz konfiguracji programowej ważne jest również uwzględnienie fizyczej budowy klinostatu oraz rozdzielczości silników, aby odpowiednio przeliczać prędkość ruchu obrotowego jego stopni swobody, na prędkość obrotów jego napędu. Całość mechaniki klinostatu zawarta została w pliku \textbf{clinostat\_mechanics.hpp}. Poszczególne elementy transferu ruchu obrotowego zaznaczone zostały na Rys. \ref{fig:klinostat_mechanika}.
 
-\begin{lstlisting}[language=C++, caption=clinostat\_mechanics.hpp]
+\begin{lstlisting}[language=C++, caption=Plik \textbf{clinostat\_mechanics.hpp}.]
 // Reduction of the gearbox mounted underneath the clinostat.
 #define GEARBOX_REDUCTION 4 
 
@@ -144,7 +144,7 @@ Zależność \ref{eq:obroty_klinostat} przedstawia sposób w jaki wyznaczany jes
 	c_{min} = \frac{f_{CPU} \cdot 60 \cdot N_S}{P_{DIV} \cdot R_{MOT} \cdot \omega_T \cdot R_G \cdot N_M}
 	\vspace{3mm}
 \end{equation}
-gdzie $f_{CPU}$ - częstotliwość taktowania MCU  [Hz], $N_S$ - liczba zębów na kole pasowym przekładni, $P_{DIV}$ - wartość prescalera układu czasowo-licznikowego, $R_{MOT}$ - rozdzielczość silników krokowych [kroki/obrót], $\omega_T$ - docelowa prędkość obrotów danego stopnia swobody klinostatu [RPM], $R_G$ - redukcja obrotów przekładni (4 w przypadku redukcji 4:1), $N_M$ - liczba zębów na głównym kole napędowym klinostatu.
+gdzie $f_{CPU}$ - częstotliwość taktowania MCU  [Hz], $N_S$ - liczba zębów na kole pasowym przekładni, $P_{DIV}$ - wartość prescalera układu czasowo-licznikowego, $R_{MOT}$ - rozdzielczość silników krokowych [kroki/obrót], $\omega_T$ - docelowa prędkość obrotów danego stopnia swobody klinostatu [RPM], $R_G$ - redukcja obrotów przekładni (4 w przypadku redukcji 4:1), $N_M$ - liczba zębów na głównym kole napędowym klinostatu. Jednostką wyznaczanego wyniku jest liczba zliczeń układu czasowo-licznikowego.
 
 \section{Schemat blokowy sterownika klinostatu}
 

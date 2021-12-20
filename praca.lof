@@ -3,7 +3,7 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Schemat trajektorii lotu parabolicznego.\relax }}{4}{figure.caption.3}%
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Schemat trajektorii lotu parabolicznego. Źródło: [opracowanie własne]\relax }}{4}{figure.caption.3}%
 \babel@toc {british}{}
 \babel@toc {polish}{}
 \babel@toc {british}{}
@@ -21,7 +21,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {1.2}{\ignorespaces Rodzaje klinorotacji 2-D. Źródło: \cite {bib:klinorotacja}\relax }}{8}{figure.caption.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {1.3}{\ignorespaces Przykładowa maszyna RPM, zawierająca mikroskop fluorescencyjny\relax }}{9}{figure.caption.5}%
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Przykładowa maszyna RPM, zawierająca mikroskop fluorescencyjny. Źródło: \cite {bib:rpmy}\relax }}{9}{figure.caption.5}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \babel@toc {british}{}
@@ -41,11 +41,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {2.6}{\ignorespaces Spreparowane półsfery z oznaczonymi elementami. \textbf {1} - otwory montażu kamery, \textbf {2} - otwory montażu oświetlenia, \textbf {3} - otwory montażu koszyka, \textbf {4} - wcięcia oraz otwory montażu łącznika półsfer, \textbf {5} - wcięcia oraz otwory montażu półsfery z wałem obrotowym. Źródło: [opracowanie własne]\relax }}{19}{figure.caption.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Łącznik montowany na półserze komory.\relax }}{19}{figure.caption.12}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Łącznik montowany na półsferze komory. Źródło: [opracowanie własne]\relax }}{19}{figure.caption.12}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.8}{\ignorespaces Elektronika klinostatu\relax }}{20}{figure.caption.13}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Elektronika klinostatu. Źródło: [opracowanie własne]\relax }}{20}{figure.caption.13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Schemat blokowy systemu. Źródło: [opracowanie własne], PRZEROBIĆ TO, BO RPI JEST Z NIEZNANEGO ŹRÓDŁA I KOMPUTER POWINIEN BYĆ RDZEŃ SYSTEMU KONTROLI\relax }}{22}{figure.caption.15}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Schemat blokowy systemu. Źródło: [opracowanie własne]\relax }}{22}{figure.caption.15}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \babel@toc {british}{}
@@ -105,11 +105,25 @@
 \babel@toc {british}{}
 \babel@toc {polish}{}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Schemat wiadomości wymienianych pomiędzy urządzeniami.\relax }}{49}{figure.caption.26}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Schemat wiadomości wymienianych pomiędzy urządzeniami. Źródło: [orpacowanie własne]\relax }}{49}{figure.caption.26}%
 \babel@toc {british}{}
 \babel@toc {polish}{}
 \defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Schemat elektryczny obwodu czujnika. Źródło: [opracowanie własne]\relax }}{53}{figure.caption.27}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Wykonana głowica czujnika wilgotności podłoża. Źródło: [orpacowanie własne]\relax }}{54}{figure.caption.28}%
+\defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
+\babel@toc {british}{}
+\babel@toc {polish}{}
+\babel@toc {british}{}
+\babel@toc {polish}{}
+\babel@toc {british}{}
+\babel@toc {polish}{}
+\babel@toc {british}{}
+\babel@toc {polish}{}
+\babel@toc {british}{}
+\babel@toc {polish}{}
 \babel@toc {british}{}
 \babel@toc {polish}{}
 \babel@toc {british}{}
