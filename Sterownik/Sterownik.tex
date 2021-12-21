@@ -167,7 +167,7 @@ Z uwagi na małą złożoność struktury plików sterownika nie zdecydowano si�
 \end{itemize}
 Taki zestaw reguł okazał się całkowicie wystarczający w procesie rozwoju programu, oraz pozwala nawet osobie bez specjalnej wiedzy na samodzielne zaprogramowanie układu. Projekt można skompilować oraz zaprogramować na każdym systemie z zainstalowanym łańcuchem narzędziowym (ang. \angver{toolchain}) \textbf{avr-gcc} oraz narzędziem \textbf{avrdude}.
 
-\begin{lstlisting}[caption=Makefile sterownika]
+\begin{lstlisting}[caption=Makefile sterownika.]
 CC=avr-gcc
 CFLAGS= -Os -DF_CPU=16000000UL -mmcu=atmega32u4
 

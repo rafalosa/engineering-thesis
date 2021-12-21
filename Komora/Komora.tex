@@ -2,11 +2,11 @@
 
 \chapter{Program komputera komory środowiskowej}
 
-Komora środowiskowa jest częścią urządzenia w której zachodzi wzrost badanej struktury biologicznej. Kluczowe dla jej wzrostu jest zachowanie pewnych cech takich jak odpowiednia ilość dostępnej wody w jej podłożu wzrostowym lub odpowiednie oświetlenie. Oprócz tego przydatne może okazać się śledzenie parametrów takich jak temperatura. Komora środowiskowa jest też miejscem docelowym gdzie działanie grawitacji jest eliminowane poprzez klinorotację. Muszą się więc znajdować również w niej czujniki, które jakość symulowanej mikrograwitacji będą monitorować.
+Komora środowiskowa jest częścią urządzenia, w której zachodzi wzrost badanej struktury biologicznej. Kluczowe dla jej wzrostu jest zachowanie pewnych cech takich jak odpowiednia ilość dostępnej wody w jej podłożu wzrostowym lub odpowiednie oświetlenie. Oprócz tego przydatne może okazać się śledzenie parametrów takich jak temperatura. Komora środowiskowa jest też miejscem docelowym, gdzie działanie grawitacji jest eliminowane poprzez klinorotację. Muszą się więc znajdować również w niej czujniki, które jakość symulowanej mikrograwitacji będą monitorować.
 
 \section{Platforma}
 
-Wybór platformy komputera komory środowiskowej został dokonany na etapie tworzenia projektu urządzenia. Wybrany został komputer Raspberry Pi Zero ze względu na niski pobór energii, co ma znaczenie dla natężenia pola magnetycznego w komorze. Posiada on również wbudowany moduł Wi-Fi za pomocą którego zrealizowano połączenie bezprzewodowe. Umożliwia to także zdalną obsługę komputera poprzez standard SSH (ang. \angver{Secure Shell}) w momencie gdy nastąpi awaria oprogramowania. Ze względu na konieczność obsłużenia kamer oraz analogowego czujnika wilgotności podłoża, komputer wyposażono w dodatkowe nakładki, które zwiększają ilość dostępnych portów USB oraz dodają konwerter analogowo-cyfrowy (ang. \angver{Analog to Digital Converter}, ADC) do magistrali I$^2$C. Na komputerze zainstalowano system operacyjny Raspbian Lite, który nie posiada graficznego interfejsu użytkownika w związku z czym ogranicza zużycie jego zasobów.
+Wybór platformy komputera komory środowiskowej został dokonany na etapie tworzenia projektu urządzenia. Wybrany został komputer Raspberry Pi Zero ze względu na niski pobór energii, co było kluczowe ze względu na ograniczenia prądowe złącz ślizgowych oraz generowane przez komputer pola magnetyczne, które w przypadku wyższych mocy mogą zaburzyć jednorodność pola. Posiada on również wbudowany moduł Wi-Fi za pomocą którego zrealizowano połączenie bezprzewodowe. Umożliwia to także zdalną obsługę komputera poprzez standard SSH (ang. \angver{Secure Shell}) w momencie gdy nastąpi awaria oprogramowania. Ze względu na konieczność obsłużenia kamer oraz analogowego czujnika wilgotności podłoża, komputer wyposażono w dodatkowe nakładki, które zwiększają ilość dostępnych portów USB oraz dodają konwerter analogowo-cyfrowy (ang. \angver{Analog to Digital Converter}, ADC) do magistrali I$^2$C. Na komputerze zainstalowano system operacyjny Raspbian Lite, który nie posiada graficznego interfejsu użytkownika w związku z czym ogranicza zużycie jego zasobów.
 
 \section{Rola programu}
 
@@ -14,7 +14,7 @@ Główną rolą programu jest odczytywanie wartości zbieranych przez szereg czu
 
 \section{Komunikacja bezprzewodowa}
 
-Komunikacja z poziomu komputera komory została w znacznym stopniu zautomatyzowana. Użytkownik musi jedynie zawrzeć spodziewany adres serwera TCP na którym komora będzie go szukać, w pliku konfiguracyjnym. W momencie kiedy taki serwer zostanie uruchomiony z poziomu aplikacj, komputer komory automatycznie go wykryje i zacznie wymieniać informacje. Kiedy serwer nie został uruchomiony komora ponawia próbę połączenia co \SI{5}{s} aż do momentu kiedy ta operacja zakończy się powodzeniem. Jeśli takie połączenie zostaje nagle zerwane, komputer komory powraca do stanu próby połączenia.
+Komunikacja z poziomu komputera komory została w znacznym stopniu zautomatyzowana. Użytkownik musi jedynie zawrzeć spodziewany adres serwera TCP na którym komora będzie go szukać, w pliku konfiguracyjnym. W momencie kiedy taki serwer zostanie uruchomiony z poziomu aplikacj, komputer komory automatycznie go wykryje i zacznie wymieniać informacje. Kiedy serwer nie został uruchomiony, komora ponawia próbę połączenia co \SI{5}{s}, aż do momentu kiedy ta operacja zakończy się powodzeniem. Jeśli takie połączenie zostaje nagle zerwane, komputer komory powraca do stanu próby połączenia.
 \begin{lstlisting}[language=Python,caption={Obsługa połączenia z serwerem TCP.}]
 while True:
 	while True:
@@ -36,13 +36,13 @@ while True:
 				break  # Here interrupt the inner forever loop and continue to watch for the connection.
 \end{lstlisting}
 
-Kiedy połączenie zostanie pomyślnie nawiązane rozpoczyna się proces wymiany informacji. Na Rys. \ref{fig:ramka danych} przedstawiono schematycznie w jaki sposób zbudowane są ramki danych wymieniane pomiędzy urządzeniami. Pierwsza część ramki składa się z nagłówka o długości \SI{10}{B}, który zawiera informację o tym ile kolejnych bajtów należy odebrać, aby skompletować wiadomość. Jeśli dana paczka została odebrana przez serwer, odsyła on informację o tym czy należy zauktualizować warunki oświetleniowe, co jest determinowane poprzez akcję użytkownika. Jeśli operator nie zmienił ustawień oświetlenia od poprzedniej wymiany danych, to wysyłany jest jedynie komunikat sygnalizujący zachowanie poprzedniego ustawienia. Cykl ten powtarza się tak długo jak istnieje połączenie pomiędzy komorą środowiskową a rdzeniem systemu kontroli.
+Kiedy połączenie zostanie pomyślnie nawiązane, rozpoczyna się proces wymiany informacji. Na Rys. \ref{fig:ramka danych} przedstawiono schematycznie w jaki sposób zbudowane są ramki danych wymieniane pomiędzy urządzeniami. Pierwsza część ramki składa się z nagłówka o długości \SI{10}{B}, który zawiera informację o tym ile kolejnych bajtów należy odebrać, aby skompletować wiadomość. Jeśli dana paczka została odebrana przez serwer, odsyła on informację o tym czy należy zauktualizować warunki oświetleniowe, co jest determinowane poprzez akcję użytkownika. Jeśli operator nie zmienił ustawień oświetlenia od poprzedniej wymiany danych, to wysyłany jest jedynie komunikat sygnalizujący zachowanie poprzedniego ustawienia. Cykl ten powtarza się tak długo, jak istnieje połączenie pomiędzy komorą środowiskową a rdzeniem systemu kontroli.
 
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=.5]{ramka}
-	\caption{Schemat wiadomości wymienianych pomiędzy urządzeniami. Źródło: [orpacowanie własne]} 
+	\caption{Schemat wiadomości wymienianych pomiędzy urządzeniami. Źródło: [opracowanie własne]} 
 	\label{fig:ramka danych}
 \end{figure}
 
@@ -58,7 +58,7 @@ W celach uproszczenia starano się dobrać czujniki tak aby wszystkie mogły zos
 	
 \end{itemize}
 
-Dla czujników przygotowany został osobny moduł \textbf{sensors.py}, który zawiera definicje klas odpowiedzialnych za tworzenie interfejsu między nimi a komputerem komory środowiskowej. Jako, że wszystkie obiekty czujników muszą posiadać metody odpowiedzialne za wysyłanie do nich danych lub ich odbieranie, zostały one oparte o dziedziczenie z abstrakcyjnej klasy bazowej (ang. \angver{abstract base class}, ABC). Oznacza to iż dzielą one metody o takiej samej nazwie, które docelowo przeznaczone są do tych samych celów, mimo tego iż mogą różnić się zawartością.
+Dla czujników przygotowany został osobny moduł \textbf{sensors.py}, który zawiera definicje klas odpowiedzialnych za tworzenie interfejsu między nimi a komputerem komory środowiskowej. Jako, że wszystkie obiekty czujników muszą posiadać metody odpowiedzialne za wysyłanie do nich danych lub ich odbieranie, zostały one oparte o dziedziczenie z abstrakcyjnej klasy bazowej (ang. \angver{abstract base class}, ABC). Oznacza to, iż dzielą one metody o takiej samej nazwie, które docelowo przeznaczone są do tych samych celów, mimo tego iż mogą różnić się zawartością.
 \begin{lstlisting}[language=Python, caption={Abstrakcyjna klasa bazowa czujników.}]
 class I2CSensor(ABC):
 

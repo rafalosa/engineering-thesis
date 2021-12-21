@@ -7,7 +7,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {3.4}Plik \textbf {clinostat\_mechanics.hpp}.}{29}{lstlisting.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {3.5}Makefile sterownika}{33}{lstlisting.3.5}%
+\contentsline {lstlisting}{\numberline {3.5}Makefile sterownika.}{33}{lstlisting.3.5}%
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {4.1}Metoda wykrywająca odłączone urządzenie.}{46}{lstlisting.4.1}%
 \defcounter {refsection}{0}\relax 
