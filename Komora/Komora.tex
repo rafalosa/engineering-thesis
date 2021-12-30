@@ -6,11 +6,11 @@ Komora środowiskowa jest częścią urządzenia, w której zachodzi wzrost bada
 
 \section{Platforma}
 
-Wybór platformy komputera komory środowiskowej został dokonany na etapie tworzenia projektu urządzenia. Wybrany został komputer Raspberry Pi Zero ze względu na niski pobór energii, co było kluczowe ze względu na ograniczenia prądowe złącz ślizgowych oraz generowane przez komputer pola magnetyczne, które w przypadku wyższych mocy mogą zaburzyć jednorodność pola. Posiada on również wbudowany moduł Wi-Fi za pomocą którego zrealizowano połączenie bezprzewodowe. Umożliwia to także zdalną obsługę komputera poprzez standard SSH (ang. \angver{Secure Shell}) w momencie gdy nastąpi awaria oprogramowania. Ze względu na konieczność obsłużenia kamer oraz analogowego czujnika wilgotności podłoża, komputer wyposażono w dodatkowe nakładki, które zwiększają ilość dostępnych portów USB oraz dodają konwerter analogowo-cyfrowy (ang. \angver{Analog to Digital Converter}, ADC) do magistrali I$^2$C. Na komputerze zainstalowano system operacyjny Raspbian Lite, który nie posiada graficznego interfejsu użytkownika w związku z czym ogranicza zużycie jego zasobów.
+Wybór platformy komputera komory środowiskowej został dokonany na etapie tworzenia projektu urządzenia. Wybrany został komputer Raspberry Pi Zero ze względu na niski pobór energii, co było kluczowe ze względu na ograniczenia prądowe złącz ślizgowych oraz generowane przez komputer pola magnetyczne, które w przypadku wyższych mocy mogą zaburzyć jednorodność pola. Posiada on również wbudowany moduł Wi-Fi za pomocą którego zrealizowano połączenie bezprzewodowe. Umożliwia to także zdalną obsługę komputera poprzez standard SSH (ang. \angver{Secure Shell}) w momencie gdy nastąpi awaria oprogramowania.\linebreak Ze względu na konieczność obsłużenia kamer oraz analogowego czujnika wilgotności podłoża, komputer wyposażono w dodatkowe nakładki, które zwiększają ilość dostępnych portów USB oraz dodają konwerter analogowo-cyfrowy (ang. \angver{Analog to Digital Converter}, ADC) do magistrali I$^2$C. Na komputerze zainstalowano system operacyjny Raspbian Lite, który nie posiada graficznego interfejsu użytkownika\linebreak w związku z czym ogranicza zużycie jego zasobów.
 
 \section{Rola programu}
 
-Główną rolą programu jest odczytywanie wartości zbieranych przez szereg czujników, a następnie przekazywanie ich do głównej aplikacji w celu wyświetlenia oraz zapisania w pliku. Oprócz tego program kontroluje oświetlacz komory środowiskowej poprzez regulację sygnału PWM podawanego na jego układ sterujący. Program kontroluje dwie sekcje oświetlacza o osobnych sygnałach PWM oraz dodatkowe diody białe służące do doświetlenia układu w momencie wykonywania zdjęcia. W celu wykonania zdjęć do komputera podłączone zostaną dwie kamery USB, które będą wykonywać zdjęcia zgodnie z poleceniami generowanymi w programie. Program oblicza również na bieżąco jakość uzyskanego stanu mikrograwitacji.
+Główną rolą programu jest odczytywanie wartości zbieranych przez szereg czujników, a następnie przekazywanie ich do głównej aplikacji w celu wyświetlenia oraz zapisania w pliku. Oprócz tego program kontroluje oświetlacz komory środowiskowej poprzez regulację sygnału PWM podawanego na jego układ sterujący. Program kontroluje dwie sekcje oświetlacza o osobnych sygnałach PWM oraz dodatkowe diody białe służące do doświetlenia układu w momencie wykonywania zdjęcia.\linebreak W celu wykonania zdjęć do komputera podłączone zostaną dwie kamery USB, które będą wykonywać zdjęcia zgodnie z poleceniami generowanymi w programie. Program oblicza również na bieżąco jakość uzyskanego stanu mikrograwitacji.
 
 \section{Komunikacja bezprzewodowa}
 
@@ -42,14 +42,14 @@ Kiedy połączenie zostanie pomyślnie nawiązane, rozpoczyna się proces wymian
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=.5]{ramka}
-	\caption{Schemat wiadomości wymienianych pomiędzy urządzeniami. Źródło: [opracowanie własne]} 
+	\caption{Schemat wiadomości wymienianych pomiędzy urządzeniami. Źródło: [opracowanie własne].} 
 	\label{fig:ramka danych}
 \end{figure}
 
 
 \section{Czujniki i kamery}
 
-W celach uproszczenia starano się dobrać czujniki tak aby wszystkie mogły zostać obsłużone przez taki sam interfejs. Do tego celu wybrano magistralę I$^2$C ze względu na jej dużą popularność oraz dostępność różnego rodzaju czujników. Na tę samą magistralę znalezniono również konwerter analogowo-cyfrowy, którego nie posiada domyślnie wybrana platforma. Oprócz czujników komputer obsługuje również dwie kamery, aby uwiecznić postęp wzrostu struktury. Poniżej umieszczono listę modeli wybranych czujników oraz kamer.
+W celach uproszczenia starano się dobrać czujniki tak, aby wszystkie mogły zostać obsłużone przez taki sam interfejs. Do tego celu wybrano magistralę I$^2$C ze względu na jej dużą popularność oraz dostępność różnego rodzaju czujników. Na tę samą magistralę znalezniono również konwerter analogowo-cyfrowy, którego nie posiada domyślnie wybrana platforma. Oprócz czujników komputer obsługuje również dwie kamery, aby uwiecznić postęp wzrostu struktury. Poniżej umieszczono listę modeli wybranych czujników oraz kamer.
 \begin{itemize}
 	\item Akcelerometr LIS3DH, magistrala I$^2$C
 	\item Termometr MCP9808, magistrala I$^2$C
@@ -79,7 +79,7 @@ class I2CSensor(ABC):
 	def fake_read():
 		pass	
 \end{lstlisting}
-Metody w jakie wyposażono obiekty czujników to wspólny konstruktor \textbf{\_\_init\_\_}, który inicjalizuje obiekt przy okazji przypisując mu otwartą magistralę oraz adres, \textbf{read} zwracającą odczytaną wartość z czujnika, \textbf{enable}, która dokonuje wszystkich operacji koniecznych do poprawnego działania czujnika oraz \textbf{fake\_read}, która emuluje odczyt z czujnika bez konieczności jego podłączenia, co było pomocne w czasie rozwoju programu. Po tak przygotowanej klasie bazowej dziedziczą klasy reprezentujące już konkretne modele czujników, ze względu na różny algorytm odbioru z nich informacji.
+Metody w jakie wyposażono obiekty czujników to wspólny konstruktor \textbf{\_\_init\_\_}, który inicjalizuje obiekt przy okazji przypisując mu otwartą magistralę oraz adres, \textbf{read} zwracającą odczytaną wartość z czujnika, \textbf{enable}, która dokonuje wszystkich operacji koniecznych do poprawnego działania czujnika oraz \textbf{fake\_read}, która emuluje odczyt z czujnika bez konieczności jego podłączenia, co było pomocne\linebreak w czasie rozwoju programu. Po tak przygotowanej klasie bazowej dziedziczą klasy reprezentujące już konkretne modele czujników, ze względu na różny algorytm odbioru z nich informacji.
 \begin{lstlisting}[language=Python, caption={Przykładowa klasa czujnika.}]
 class ADS1115ADC(I2CSensor):
 	
@@ -122,7 +122,7 @@ class ADS1115ADC(I2CSensor):
 			return True
 \end{lstlisting}
 
-Kamery również obsługiwane są z poziomu programu poprzez wywoływanie poleceń w powłoce systemowej za pomocą biblioteki \textbf{subprocess}. W tym celu przygotowano prosty skrypt \textbf{take\_pic.sh}, który wykonuje zdjęcia za pomocą obu kamer przy użyciu interfejsu Video4Linux. Konieczne jest aby obie kamery posiadały odpowiednie nazwy adapterów portu a, konkretnie \textbf{/dev/videoCam0} oraz \textbf{/dev/videoCam1}. Uzyskiwane jest to za pomocą pliku reguł \textbf{99-name-cameras.rules}, który rozpoznaje unikatowe dla kamer cechy i tworzy odpowiednie dowiązania symboliczne. Plik ten został również umieszczony w repozytorium projektu i należy umieścić go w katalogu \textbf{/etc/udev/rules.d/} w systemie plików komputera komory środowiskowej. Należy zaznaczyć iż numery umieszczone w pliku reguł odpowiadają konkretnym egzamplarzom kamer, a więc jeśli zostaną one zamienione, należy ów kod również zamienić.
+Kamery również obsługiwane są z poziomu programu poprzez wywoływanie poleceń w powłoce systemowej za pomocą biblioteki \textbf{subprocess}. W tym celu przygotowano prosty skrypt \textbf{take\_pic.sh}, który wykonuje zdjęcia za pomocą obu kamer przy użyciu interfejsu Video4Linux. Konieczne jest, aby obie kamery posiadały odpowiednie nazwy adapterów portu a, konkretnie \textbf{/dev/videoCam0} oraz \textbf{/dev/videoCam1}. Uzyskiwane jest to za pomocą pliku reguł \textbf{99-name-cameras.rules}, który rozpoznaje unikatowe dla kamer cechy i tworzy odpowiednie dowiązania symboliczne. Plik ten został również umieszczony w repozytorium projektu i należy umieścić go w katalogu \textbf{/etc/udev/rules.d/} w systemie plików komputera komory środowiskowej. Należy zaznaczyć iż numery umieszczone w pliku reguł odpowiadają konkretnym egzamplarzom kamer, a więc jeśli zostaną one zamienione, należy ów kod również zamienić.
 \begin{lstlisting}[caption={Plik reguł \textbf{99-name-cameras.rules}.}]
 SUBSYSTEM=="video4linux", ENV{ID_REVISION}=="5131",SYMLINK+="videoCam0"
 SUBSYSTEM=="video4linux", ENV{ID_REVISION}=="5127",SYMLINK+="videoCam1"
@@ -133,7 +133,7 @@ Na etapie projektu przetestowano kilka dostępnych na rynku czujników wilgotno�
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=.4]{schemat_wilg}
-	\caption{Schemat elektryczny obwodu czujnika. Źródło: [opracowanie własne]} 
+	\caption{Schemat elektryczny obwodu czujnika. Źródło: [opracowanie własne].} 
 	\label{fig:czujnik wilg sch}
 \end{figure}
 
@@ -142,6 +142,6 @@ Na etapie projektu przetestowano kilka dostępnych na rynku czujników wilgotno�
 	\setlength{\fboxsep}{0pt}
 	\setlength{\fboxrule}{1pt}
 	\fbox{\includegraphics[scale=.15,angle=90]{czujnik_wilg}}
-	\caption{Wykonana głowica czujnika wilgotności podłoża. Źródło: [opracowanie własne]} 
+	\caption{Wykonana głowica czujnika wilgotności podłoża. Źródło: [opracowanie własne].} 
 	\label{fig:czujnik wilg}
 \end{figure}
