@@ -78,7 +78,7 @@ Sterowanie klinostatem odbywa się poprzez wysyłanie odpowiednich komend przez 
 #define STOPPING_MODE_REPORT 0x07
 #define IDLE_MODE_REPORT 0x08
 \end{lstlisting}
-Powyżej widoczny jest zestaw komendy, które klinostat zwraca podczas operacji oraz, które mogą zostać przez niego odebrane. Komendy znajdują się w pliku \textbf{commands.hpp} i zdefiniowane są jako dyrektywy preprocesora. Część komend wymaga odebrania 4 lub 8 kolejnych bajtów z rejestru UDR1, następujących bezpośrednio po komendzie, kolejna część wymaga odpowiedzi ze strony kontrolera klinostatu.
+Powyżej widoczny jest zestaw komend, które klinostat zwraca podczas operacji oraz, które mogą zostać przez niego odebrane i zinterpretowane. Komendy znajdują się w pliku \textbf{commands.hpp} i zdefiniowane są jako dyrektywy preprocesora. Część komend wymaga odebrania 4 lub 8 kolejnych bajtów z rejestru UDR1, następujących bezpośrednio po komendzie, kolejna część wymaga odpowiedzi ze strony kontrolera klinostatu.
 
 \section{Konfiguracja sterownika}
 
@@ -97,9 +97,9 @@ void SETUP_TIMER1_INTERRUPTS(){
 	sei(); // Reenable interrupts.
 }
 \end{lstlisting}
-Układu czasowo-licznikowe 1 i 3 skonfigurowane są identycznie, pracują w trybie CTC, a ich prescaler ustawiony jest na 64 poprzez ustawienie bitów CSn0 oraz CSn1 na wartość 1 w rejestrze TCCRnB, gdzie $n$ jest numerem układu.  Jak wspomniano wcześniej zerowy układ czasowo-licznikowy przeznaczony jest do odmierzania czasu programu. W tym celu układ ten również skonfigurowany jest do pracy w trybie CTC oraz jego prescaler ustawiony jest na 64. Przy częstotliwości taktowania \SI{16}{MHz} daje to 250 tysięcy zliczeń układu w ciągu sekundy, co daje 250 zliczeń w ciągu jednej milisekundy. W rejestrze OCR0A zapisana została więc wartość 249, co powoduje wyzwolenie ISR co każdą milisekundę pracy programu. Liczba milisekund przechowywana jest w zmiennej typu całkowitego, bezznakowego, o wielkości 64 bitów (uint64\_t), co pozwala na śledzenie czasu programu przez $\approx5.8\cdot 10^8$ lat, znacznie przewyższając przewidywaną żywotność urządzenia.
+Układu czasowo-licznikowe 1 i 3 skonfigurowane są identycznie, pracują w trybie CTC, a ich prescaler ustawiony jest na 64 poprzez ustawienie bitów CSn0 oraz CSn1 na wartość 1 w rejestrze TCCRnB, gdzie $n$ jest numerem układu.  Jak wspomniano wcześniej zerowy układ czasowo-licznikowy przeznaczony jest do odmierzania czasu programu. W tym celu układ ten również skonfigurowany jest do pracy w trybie CTC oraz jego prescaler ustawiony jest na 64. Przy częstotliwości taktowania \SI{16}{MHz} daje to 250 tysięcy zliczeń układu w ciągu sekundy, co jest równe 250-ciu zliczeniom w ciągu jednej milisekundy. W rejestrze OCR0A zapisana została więc wartość 249, co powoduje wyzwolenie ISR co każdą milisekundę pracy programu. Liczba milisekund przechowywana jest w zmiennej typu całkowitego, bezznakowego, o wielkości 64 bitów (uint64\_t), co pozwala na śledzenie czasu programu przez $\approx5.8\cdot 10^8$ lat, znacznie przewyższając przewidywaną żywotność urządzenia.
 
-W pliku \textbf{driver\_config.hpp} znajdują się również deklaracje wejść i wyjść mikrokontrolera. Przypisują one funkcje wykonywania kroków, włączania wi wyłączania pompy oraz hamulca silników do odpowiednich wyprowadzeń mikrokontrolera. Przy zmianach fizycznej konfiguracji urządzenia, przystosowanie do niej programu jest bardzo proste, dzięki przyjętemu nazewnictwu.
+W pliku \textbf{driver\_config.hpp} znajdują się również deklaracje wejść i wyjść mikrokontrolera. Przypisują one funkcje wykonywania kroków, włączania i wyłączania pompy oraz hamulca silników do odpowiednich wyprowadzeń mikrokontrolera. Przy zmianach fizycznej konfiguracji urządzenia, przystosowanie do niej programu jest bardzo proste, dzięki przyjętemu nazewnictwu.
 
 \begin{lstlisting}[language=C++, caption=Konfiguracja wyprowadzeń.]
 #define CHAMBER_STEP 0 // PD0 for chamber step pin.
