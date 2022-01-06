@@ -10,10 +10,10 @@ Celem wspomnianego projektu było zaprojektowanie układu laboratoryjnego, skła
  klatki Helmholtza oraz umieszczonego wewnątrz klinostatu trójwymiarowego. Docelowo taki układ
   pozwalałby na przeprowadzanie badań nad rozwojem roślin w warunkach symulowanej
    mikrograwitacji bez ziemskiego pola magnetycznego. Klatka Helmholtza jest złożeniem trzech
-    par cewek Helmholtza \linebreak w takiej konfiguracji, aby osie magnetyczne każdej z par było
-     prostopadłe do pozostałych. Pozwala to wytworzyć wektor indukjcji magnetycznej o dowolnym
+    par cewek Helmholtza \linebreak w takiej konfiguracji, aby osie magnetyczne każdej z par były
+     prostopadłe do pozostałych. Pozwala to wytworzyć wektor indukcji magnetycznej o dowolnym
       kierunku przestrzennym i bardzo wysokiej jednorodności. Wizualizację wyników \linebreak z przeprowadzonych symulacji można zobaczyć na Rys. \ref{fig:polemag} . Wysoka jednorodność jest kluczowa
-       aby generowany wektor indukcji magnetycznej był stały \linebreak w objętości przeprowadzanego,
+       aby generowany wektor indukcji magnetycznej był stały \linebreak w objętości przeprowadzanego
         eksperymentu. W związku z wymaganiami projektu, wewnętrzna konstrukcja klinostatu
          musiała zostać wykonana tak, aby mieć jak najmniejszy wpływ na panujące wewnątrz
           warunki magnetyczne. Naturalnie rodzi to zagadnienie wyboru materiałów konstrukcyjnych
@@ -60,7 +60,7 @@ jest możliwość uruchomienia go w trybach klinostatu 2-D oraz 3-D jak opisano 
 stabilizowanych włóknem szklanym. Odcinki rur wraz z kształtkami 90$^\circ$ oraz
 czwórnikami zostały połączone metodą polifuzji termicznej (zgrzewanie). Tego typu rury
 wykorzystywane są w instalacjach centralnego ogrzewania, dzięki czemu ich koszt jest
-niski. Konstrukcję ramy przedstawiono na Rys. \ref{fig:rama_klinostatu}.Przeprowadzone
+niski. Konstrukcję ramy przedstawiono na Rys. \ref{fig:rama_klinostatu}. Przeprowadzone
 analizy elementów skończonych (FEM), wskazały iż materiał ten posiada wystarczającą
 wytrzymałość, aby wykorzystać go jako element strukturalny ramy klinostatu. Jako wał
 obrotowy wykorzystano rurę aluminiową o średnicy \SI{12}{mm}. Wykorzystanie
@@ -229,7 +229,7 @@ Wewnętrzny stopień swobody klinostatu składa się z kulistej komory środowis
 
 \section{Kontrola klinostatu}
 
-Jak wspomniano w podrozdziale \ref{konstrukcja}, oba stopnie swobody klinostatu mają swoją niezależną jednostkę napędową. Jako źródło ruchu obrotowego wybrano silniki krokowe w standardzie NEMA 17, model 42BYGHM809. Są to silniki o rozdzielczości ruchu 400 kroków na pełen obrót oraz momencie obrotowym wynoszącym \SI{0,48}{Nm}. Podłączone są one do opisanych wcześniej przekładni walcowych, których wyjścia zakończone są kołami pasowymi. Ruch obrotowy jest następnie przenoszony przez pasy zębate, które ostatecznie łączą się z głównymi kołami napędowymi klinostatu na szczycie konstrukcji jego podstawy. Na silniki krokowe zdecydowano się ze względu na prostotę ich sterowania oraz możliwość dokładnego pozycjonowania w razie potrzeby rozszerzenia urządzenia o taką funkcjonalność. Silniki podłączone są bezpośrednio do obudowy zawierającej elektronikę sterującą klinostatem. Elektronika sterująca składa się z platformy Arduino Leonardo stanowiącej sterownik układu, nakładki RAMPS dla platform Arduino, dwóch sterowników silników krokowych A4988, konwertera UART/USB w celu komunikacji \linebreak z komputerem przez interfejs USB oraz przetwornicy step-up, konwertującej napięcie zasilacza 12V do 36V dla zasilania silników. W obudowie zamontowany został również wentylator chłodzący sterowniki silników. Zmontowany układ przedstawiony został na Rys. \ref{fig:elektronika}. 
+Jak wspomniano w podrozdziale \ref{konstrukcja}, oba stopnie swobody klinostatu mają swoją niezależną jednostkę napędową. Jako źródło ruchu obrotowego wybrano silniki krokowe w standardzie NEMA 17, model 42BYGHM809. Są to silniki o rozdzielczości ruchu 400 kroków na pełen obrót oraz momencie obrotowym wynoszącym \SI{0,48}{Nm}. Podłączone są one do opisanych wcześniej przekładni walcowych, których wyjścia zakończone są kołami pasowymi. Ruch obrotowy jest następnie przenoszony przez pasy zębate, które ostatecznie łączą się z głównymi kołami napędowymi klinostatu na szczycie konstrukcji jego podstawy. Na silniki krokowe zdecydowano się ze względu na prostotę ich sterowania oraz możliwość dokładnego pozycjonowania w razie potrzeby rozszerzenia urządzenia o taką funkcjonalność. Silniki podłączone są bezpośrednio do obudowy zawierającej elektronikę sterującą klinostatem. Elektronika sterująca składa się z platformy Arduino Leonardo stanowiącej kontroler układu, nakładki RAMPS dla platform Arduino, dwóch sterowników silników krokowych A4988, konwertera UART/USB w celu komunikacji \linebreak z komputerem przez interfejs USB oraz przetwornicy step-up, konwertującej napięcie zasilacza 12V do 36V dla zasilania silników. W obudowie zamontowany został również wentylator chłodzący sterowniki silników. Zmontowany układ przedstawiony został na Rys. \ref{fig:elektronika}. 
 
 \begin{figure}[ht]
 	\centering
